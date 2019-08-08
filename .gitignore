@@ -1,0 +1,12 @@
+/.axoCover
+/.vs
+/bin
+/IO.Files.FileOperation/obj
+/packages
+/Settings/obj
+/Settings/Tests/obj
+/Settings/Types/obj
+/UI/CaptionedPictureBox/obj
+/UI/DirectoryBox/obj
+/UI/DirectoryBox/Tests/obj
+/UI/TaskDialog/obj
