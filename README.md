@@ -24,9 +24,9 @@ Provides access to the Windows Vista task dialog with large, customizable action
 ## Revision History
 ### 5.0.0
 * Starting over from scratch in place of au.util
-* Created assemblies needed for [PhotoComb](/misterhaan/PhotoComb) and [MythClient](/misterhaan/MythClient)
-** au.IO.Files.FileOperation
-** au.Settings
-** au.UI.CaptionedPictureBox
-** au.UI.DirectoryBox
-** au.UI.TaskDialog
+* Created assemblies needed for [PhotoComb](https://github.com/misterhaan/PhotoComb) and [MythClient](https://github.com/misterhaan/MythClient)
+	* au.IO.Files.FileOperation
+	* au.Settings
+	* au.UI.CaptionedPictureBox
+	* au.UI.DirectoryBox
+	* au.UI.TaskDialog
