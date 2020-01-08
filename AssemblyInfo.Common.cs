@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyCompany("the analog underground")]
 [assembly: AssemblyProduct("Common Utility")]
-[assembly: AssemblyCopyright("© 2019 the analog underground")]
+[assembly: AssemblyCopyright("© 2020 the analog underground")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
