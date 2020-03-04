@@ -61,12 +61,20 @@ namespace au.UI.LatestVersion {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Download and install
-        ///Automatically download the update, install it, and remove the file when completed..
+        ///   Looks up a localized string similar to Automatically download the update, install it, and remove the file when completed..
         /// </summary>
-        internal static string DownloadAndInstallUpdate {
+        internal static string DownloadAndInstallUpdateOptionDescription {
             get {
-                return ResourceManager.GetString("DownloadAndInstallUpdate", resourceCulture);
+                return ResourceManager.GetString("DownloadAndInstallUpdateOptionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download and install.
+        /// </summary>
+        internal static string DownloadAndInstallUpdateOptionTitle {
+            get {
+                return ResourceManager.GetString("DownloadAndInstallUpdateOptionTitle", resourceCulture);
             }
         }
         
@@ -80,22 +88,38 @@ namespace au.UI.LatestVersion {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Download only
-        ///Just download the update.  It will need to be installed manually..
+        ///   Looks up a localized string similar to Just download the update.  It will need to be installed manually..
         /// </summary>
-        internal static string DownloadUpdateOnly {
+        internal static string DownloadUpdateOnlyOptionDescription {
             get {
-                return ResourceManager.GetString("DownloadUpdateOnly", resourceCulture);
+                return ResourceManager.GetString("DownloadUpdateOnlyOptionDescription", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remind me later
-        ///Don’t do anything about this update right now.  You will be reminded again next time..
+        ///   Looks up a localized string similar to Download only.
         /// </summary>
-        internal static string IgnoreUpdate {
+        internal static string DownloadUpdateOnlyOptionTitle {
             get {
-                return ResourceManager.GetString("IgnoreUpdate", resourceCulture);
+                return ResourceManager.GetString("DownloadUpdateOnlyOptionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don’t do anything about this update right now.  You will be reminded again next time..
+        /// </summary>
+        internal static string IgnoreUpdateOptionDescription {
+            get {
+                return ResourceManager.GetString("IgnoreUpdateOptionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remind me later.
+        /// </summary>
+        internal static string IgnoreUpdateOptionTitle {
+            get {
+                return ResourceManager.GetString("IgnoreUpdateOptionTitle", resourceCulture);
             }
         }
         

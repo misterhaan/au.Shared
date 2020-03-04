@@ -111,11 +111,11 @@ namespace au.UI.LatestVersion {
 		/// <returns></returns>
 		private static IEnumerable<TaskDialogButton> GetUpdateDialogButtons(Uri updateUrl) {
 			// install only works for msi
-			if(Path.GetExtension(updateUrl.LocalPath).Equals("msi", StringComparison.OrdinalIgnoreCase))
-				yield return new TaskDialogButton((int)UpdateDialogResponse.DownloadInstall, Dialog.DownloadAndInstallUpdate);
+			if(Path.GetExtension(updateUrl.LocalPath).Equals(".msi", StringComparison.OrdinalIgnoreCase))
+				yield return new TaskDialogButton((int)UpdateDialogResponse.DownloadInstall, Dialog.DownloadAndInstallUpdateOptionTitle, Dialog.DownloadAndInstallUpdateOptionDescription);
 			// all update package types can be downloaded or ignored
-			yield return new TaskDialogButton((int)UpdateDialogResponse.DownloadOnly, Dialog.DownloadUpdateOnly);
-			yield return new TaskDialogButton((int)UpdateDialogResponse.Cancel, Dialog.IgnoreUpdate);
+			yield return new TaskDialogButton((int)UpdateDialogResponse.DownloadOnly, Dialog.DownloadUpdateOnlyOptionTitle, Dialog.DownloadUpdateOnlyOptionDescription);
+			yield return new TaskDialogButton((int)UpdateDialogResponse.Cancel, Dialog.IgnoreUpdateOptionTitle, Dialog.IgnoreUpdateOptionDescription);
 		}
 
 		/// <summary>

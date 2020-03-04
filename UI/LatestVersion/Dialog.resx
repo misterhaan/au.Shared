@@ -117,24 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DownloadAndInstallUpdate" xml:space="preserve">
-    <value>Download and install
-Automatically download the update, install it, and remove the file when completed.</value>
-    <comment>Action title and description for downloading and installing the latest version.  Must me formatted title, line break, description.</comment>
+  <data name="DownloadAndInstallUpdateOptionDescription" xml:space="preserve">
+    <value>Automatically download the update, install it, and remove the file when completed.</value>
+    <comment>Action description for downloading and installing the latest version.</comment>
+  </data>
+  <data name="DownloadAndInstallUpdateOptionTitle" xml:space="preserve">
+    <value>Download and install</value>
+    <comment>Action title for downloading and installing the latest version.</comment>
   </data>
   <data name="DownloadInstallerTitle" xml:space="preserve">
     <value>Download installer</value>
     <comment>Title for the save file dialog when an installer is being downloaded for manual installation.</comment>
   </data>
-  <data name="DownloadUpdateOnly" xml:space="preserve">
-    <value>Download only
-Just download the update.  It will need to be installed manually.</value>
-    <comment>Action title and description for downloading the latest version without installing.  Must me formatted title, line break, description.</comment>
+  <data name="DownloadUpdateOnlyOptionDescription" xml:space="preserve">
+    <value>Just download the update.  It will need to be installed manually.</value>
+    <comment>Action description for downloading the latest version without installing.</comment>
   </data>
-  <data name="IgnoreUpdate" xml:space="preserve">
-    <value>Remind me later
-Don’t do anything about this update right now.  You will be reminded again next time.</value>
-    <comment>Action title and description for not doing anything about the latest version right now.  Must me formatted title, line break, description.</comment>
+  <data name="DownloadUpdateOnlyOptionTitle" xml:space="preserve">
+    <value>Download only</value>
+    <comment>Action title for downloading the latest version without installing.</comment>
+  </data>
+  <data name="IgnoreUpdateOptionDescription" xml:space="preserve">
+    <value>Don’t do anything about this update right now.  You will be reminded again next time.</value>
+    <comment>Action description for not doing anything about the latest version right now.</comment>
+  </data>
+  <data name="IgnoreUpdateOptionTitle" xml:space="preserve">
+    <value>Remind me later</value>
+    <comment>Action title for not doing anything about the latest version right now.</comment>
   </data>
   <data name="UpdateAvailableDescription" xml:space="preserve">
     <value>{0} is available</value>
