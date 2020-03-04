@@ -17,9 +17,8 @@ namespace au.UI.TaskDialog {
 		/// <summary>
 		/// Creates a default Task Dialog.
 		/// </summary>
-		public TaskDialog() {
-			Reset();
-		}
+		public TaskDialog()
+			=> Reset();
 
 		/// <summary>
 		/// Returns true if the current operating system supports TaskDialog. If false TaskDialog.Show should not
@@ -114,8 +113,8 @@ namespace au.UI.TaskDialog {
 		/// in the callback function specified by Callback member.
 		/// </summary>
 		public bool EnableHyperlinks {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_ENABLE_HYPERLINKS); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_ENABLE_HYPERLINKS, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_ENABLE_HYPERLINKS);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_ENABLE_HYPERLINKS, value);
 		}
 
 		/// <summary>
@@ -123,8 +122,8 @@ namespace au.UI.TaskDialog {
 		/// close button even if no cancel button is specified in either the CommonButtons or Buttons members.
 		/// </summary>
 		public bool AllowDialogCancellation {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_ALLOW_DIALOG_CANCELLATION); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_ALLOW_DIALOG_CANCELLATION, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_ALLOW_DIALOG_CANCELLATION);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_ALLOW_DIALOG_CANCELLATION, value);
 		}
 
 		/// <summary>
@@ -135,8 +134,8 @@ namespace au.UI.TaskDialog {
 		/// as the command link’s note. This flag is ignored if the Buttons member has no entires.
 		/// </summary>
 		public bool UseCommandLinks {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_USE_COMMAND_LINKS); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_USE_COMMAND_LINKS, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_USE_COMMAND_LINKS);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_USE_COMMAND_LINKS, value);
 		}
 
 		/// <summary>
@@ -147,8 +146,8 @@ namespace au.UI.TaskDialog {
 		/// note. This flag is ignored if the Buttons member has no entires.
 		/// </summary>
 		public bool UseCommandLinksNoIcon {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_USE_COMMAND_LINKS_NO_ICON); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_USE_COMMAND_LINKS_NO_ICON, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_USE_COMMAND_LINKS_NO_ICON);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_USE_COMMAND_LINKS_NO_ICON, value);
 		}
 
 		/// <summary>
@@ -157,8 +156,8 @@ namespace au.UI.TaskDialog {
 		/// is ignored if the ExpandedInformation member is null.
 		/// </summary>
 		public bool ExpandFooterArea {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_EXPAND_FOOTER_AREA); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_EXPAND_FOOTER_AREA, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_EXPAND_FOOTER_AREA);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_EXPAND_FOOTER_AREA, value);
 		}
 
 		/// <summary>
@@ -167,8 +166,8 @@ namespace au.UI.TaskDialog {
 		/// is null.
 		/// </summary>
 		public bool ExpandedByDefault {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_EXPANDED_BY_DEFAULT); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_EXPANDED_BY_DEFAULT, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_EXPANDED_BY_DEFAULT);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_EXPANDED_BY_DEFAULT, value);
 		}
 
 		/// <summary>
@@ -176,32 +175,32 @@ namespace au.UI.TaskDialog {
 		/// initially displayed. This flag is ignored if the VerificationText parameter is null.
 		/// </summary>
 		public bool VerificationFlagChecked {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_VERIFICATION_FLAG_CHECKED); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_VERIFICATION_FLAG_CHECKED, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_VERIFICATION_FLAG_CHECKED);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_VERIFICATION_FLAG_CHECKED, value);
 		}
 
 		/// <summary>
 		/// Indicates that a Progress Bar should be displayed.
 		/// </summary>
 		public bool ShowProgressBar {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_SHOW_PROGRESS_BAR); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_SHOW_PROGRESS_BAR, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_SHOW_PROGRESS_BAR);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_SHOW_PROGRESS_BAR, value);
 		}
 
 		/// <summary>
 		/// Indicates that an Marquee Progress Bar should be displayed.
 		/// </summary>
 		public bool ShowMarqueeProgressBar {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_SHOW_MARQUEE_PROGRESS_BAR); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_SHOW_MARQUEE_PROGRESS_BAR, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_SHOW_MARQUEE_PROGRESS_BAR);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_SHOW_MARQUEE_PROGRESS_BAR, value);
 		}
 
 		/// <summary>
 		/// Indicates that the TaskDialog’s callback should be called approximately every 200 milliseconds.
 		/// </summary>
 		public bool CallbackTimer {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_CALLBACK_TIMER); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_CALLBACK_TIMER, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_CALLBACK_TIMER);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_CALLBACK_TIMER, value);
 		}
 
 		/// <summary>
@@ -210,32 +209,32 @@ namespace au.UI.TaskDialog {
 		/// positioned (centered) relative to the monitor.
 		/// </summary>
 		public bool PositionRelativeToWindow {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_POSITION_RELATIVE_TO_WINDOW); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_POSITION_RELATIVE_TO_WINDOW, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_POSITION_RELATIVE_TO_WINDOW);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_POSITION_RELATIVE_TO_WINDOW, value);
 		}
 
 		/// <summary>
 		/// Indicates that the TaskDialog should have right to left layout.
 		/// </summary>
 		public bool RightToLeftLayout {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_RTL_LAYOUT); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_RTL_LAYOUT, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_RTL_LAYOUT);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_RTL_LAYOUT, value);
 		}
 
 		/// <summary>
 		/// Indicates that the TaskDialog should have no default radio button.
 		/// </summary>
 		public bool NoDefaultRadioButton {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_NO_DEFAULT_RADIO_BUTTON); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_NO_DEFAULT_RADIO_BUTTON, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_NO_DEFAULT_RADIO_BUTTON);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_NO_DEFAULT_RADIO_BUTTON, value);
 		}
 
 		/// <summary>
 		/// Indicates that the TaskDialog can be minimised. Works only if there if parent window is null. Will enable cancellation also.
 		/// </summary>
 		public bool CanBeMinimized {
-			get { return HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_CAN_BE_MINIMIZED); }
-			set { SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_CAN_BE_MINIMIZED, value); }
+			get => HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_CAN_BE_MINIMIZED);
+			set => SetFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS.TDF_CAN_BE_MINIMIZED, value);
 		}
 
 		/// <summary>
@@ -344,9 +343,8 @@ namespace au.UI.TaskDialog {
 		/// </summary>
 		/// <returns>The result of the dialog, either a DialogResult value for common push buttons set in the CommonButtons
 		/// member or the ButtonID from a TaskDialogButton structure set on the Buttons member.</returns>
-		public int Show() {
-			return Show(IntPtr.Zero, out bool verificationFlagChecked, out int radioButtonResult);
-		}
+		public int Show()
+			=> Show(IntPtr.Zero, out _, out _);
 
 		/// <summary>
 		/// Creates, displays, and operates a task dialog. The task dialog contains application-defined messages, title,
@@ -356,9 +354,8 @@ namespace au.UI.TaskDialog {
 		/// <param name="owner">Owner window the task Dialog will modal to.</param>
 		/// <returns>The result of the dialog, either a DialogResult value for common push buttons set in the CommonButtons
 		/// member or the ButtonID from a TaskDialogButton structure set on the Buttons member.</returns>
-		public int Show(IWin32Window owner) {
-			return Show(owner?.Handle ?? IntPtr.Zero, out bool verificationFlagChecked, out int radioButtonResult);
-		}
+		public int Show(IWin32Window owner)
+			=> Show(owner?.Handle ?? IntPtr.Zero, out _, out _);
 
 		/// <summary>
 		/// Creates, displays, and operates a task dialog. The task dialog contains application-defined messages, title,
@@ -368,9 +365,8 @@ namespace au.UI.TaskDialog {
 		/// <param name="hwndOwner">Owner window the task Dialog will modal to.</param>
 		/// <returns>The result of the dialog, either a DialogResult value for common push buttons set in the CommonButtons
 		/// member or the ButtonID from a TaskDialogButton structure set on the Buttons member.</returns>
-		public int Show(IntPtr hwndOwner) {
-			return Show(hwndOwner, out bool verificationFlagChecked, out int radioButtonResult);
-		}
+		public int Show(IntPtr hwndOwner)
+			=> Show(hwndOwner, out _, out _);
 
 		/// <summary>
 		/// Creates, displays, and operates a task dialog. The task dialog contains application-defined messages, title,
@@ -382,9 +378,8 @@ namespace au.UI.TaskDialog {
 		/// was dismissed.</param>
 		/// <returns>The result of the dialog, either a DialogResult value for common push buttons set in the CommonButtons
 		/// member or the ButtonID from a TaskDialogButton structure set on the Buttons member.</returns>
-		public int Show(IWin32Window owner, out bool verificationFlagChecked) {
-			return Show(owner?.Handle ?? IntPtr.Zero, out verificationFlagChecked, out int radioButtonResult);
-		}
+		public int Show(IWin32Window owner, out bool verificationFlagChecked)
+			=> Show(owner?.Handle ?? IntPtr.Zero, out verificationFlagChecked, out _);
 
 		/// <summary>
 		/// Creates, displays, and operates a task dialog. The task dialog contains application-defined messages, title,
@@ -396,11 +391,10 @@ namespace au.UI.TaskDialog {
 		/// was dismissed.</param>
 		/// <returns>The result of the dialog, either a DialogResult value for common push buttons set in the CommonButtons
 		/// member or the ButtonID from a TaskDialogButton structure set on the Buttons member.</returns>
-		public int Show(IntPtr hwndOwner, out bool verificationFlagChecked) {
+		public int Show(IntPtr hwndOwner, out bool verificationFlagChecked)
 			// We have to call a private version or PreSharp gets upset about a unsafe
 			// block in a public method. (PreSharp error 56505)
-			return PrivateShow(hwndOwner, out verificationFlagChecked, out int radioButtonResult);
-		}
+			=> PrivateShow(hwndOwner, out verificationFlagChecked, out _);
 
 		/// <summary>
 		/// Creates, displays, and operates a task dialog. The task dialog contains application-defined messages, title,
@@ -413,9 +407,8 @@ namespace au.UI.TaskDialog {
 		/// <param name="radioButtonResult">The radio botton selected by the user.</param>
 		/// <returns>The result of the dialog, either a DialogResult value for common push buttons set in the CommonButtons
 		/// member or the ButtonID from a TaskDialogButton structure set on the Buttons member.</returns>
-		public int Show(IWin32Window owner, out bool verificationFlagChecked, out int radioButtonResult) {
-			return Show(owner?.Handle ?? IntPtr.Zero, out verificationFlagChecked, out radioButtonResult);
-		}
+		public int Show(IWin32Window owner, out bool verificationFlagChecked, out int radioButtonResult)
+			=> Show(owner?.Handle ?? IntPtr.Zero, out verificationFlagChecked, out radioButtonResult);
 
 		/// <summary>
 		/// Creates, displays, and operates a task dialog. The task dialog contains application-defined messages, title,
@@ -428,11 +421,10 @@ namespace au.UI.TaskDialog {
 		/// <param name="radioButtonResult">The radio botton selected by the user.</param>
 		/// <returns>The result of the dialog, either a DialogResult value for common push buttons set in the CommonButtons
 		/// member or the ButtonID from a TaskDialogButton structure set on the Buttons member.</returns>
-		public int Show(IntPtr hwndOwner, out bool verificationFlagChecked, out int radioButtonResult) {
+		public int Show(IntPtr hwndOwner, out bool verificationFlagChecked, out int radioButtonResult)
 			// We have to call a private version or PreSharp gets upset about a unsafe
 			// block in a public method. (PreSharp error 56505)
-			return PrivateShow(hwndOwner, out verificationFlagChecked, out radioButtonResult);
-		}
+			=> PrivateShow(hwndOwner, out verificationFlagChecked, out radioButtonResult);
 
 		/// <summary>
 		/// Creates, displays, and operates a task dialog. The task dialog contains application-defined messages, title,
@@ -454,7 +446,7 @@ namespace au.UI.TaskDialog {
 			try {
 				config.cbSize = (uint)Marshal.SizeOf(typeof(UnsafeNativeMethods.TASKDIALOGCONFIG));
 				config.hwndParent = hwndOwner;
-				config.dwFlags = this._flags;
+				config.dwFlags = _flags;
 				config.dwCommonButtons = CommonButtons;
 
 				if(!string.IsNullOrEmpty(WindowTitle))
@@ -625,8 +617,7 @@ namespace au.UI.TaskDialog {
 		/// </summary>
 		/// <param name="flag">The flag bit to check.</param>
 		/// <returns>True if the flag is set.</returns>
-		private bool HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS flag) {
-			return (_flags & flag) != 0;
-		}
+		private bool HasFlag(UnsafeNativeMethods.TASKDIALOG_FLAGS flag)
+			=> (_flags & flag) != 0;
 	}
 }
