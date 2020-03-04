@@ -21,6 +21,9 @@ Provides a control for displaying a picture with a caption beneath it.
 ### au.UI.DirectoryBox
 Provides a control for selecting a directory.
 
+### au.UI.LatestVersion
+Provides dialogs for checking for, downloading, and installing application updates.
+
 ### au.UI.TaskDialog
 Provides access to the Windows Vista task dialog with large, customizable action buttons.
 
