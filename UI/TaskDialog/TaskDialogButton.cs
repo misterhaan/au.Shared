@@ -31,6 +31,16 @@ namespace au.UI.TaskDialog {
 		}
 
 		/// <summary>
+		/// Initialize the custom button.
+		/// </summary>
+		/// <param name="id">The ID of the button. This value is returned by TaskDialog.Show when
+		/// the button is clicked. Typically this will be a value in the DialogResult enum.</param>
+		/// <param name="title">The title string that appears on the button (larger font).</param>
+		/// <param name="description">The description string that appears on the button (smaller font).</param>
+		public TaskDialogButton(int id, string title, string description)
+			: this(id, title + "\n" + description) { }
+
+		/// <summary>
 		/// The ID of the button. This value is returned by TaskDialog.Show when the button is clicked.
 		/// </summary>
 		public int ButtonId {
