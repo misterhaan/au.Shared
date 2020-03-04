@@ -4,9 +4,19 @@
 	/// from the GitHub API.
 	/// </summary>
 	public interface IAsset {
+		/// <summary>
+		/// Asset name
+		/// </summary>
 		string name { get; }
+
+		/// <summary>
+		/// Asset size
+		/// </summary>
 		long size { get; }
-		string url { get; }
+
+		/// <summary>
+		/// Asset download URL
+		/// </summary>
 		string browser_download_url { get; }
 	}
 }

@@ -8,17 +8,31 @@ namespace au.IO.Web.API.GitHub {
 	/// Information about a release.  Subset of properties from the GitHub API.
 	/// </summary>
 	internal class Release : IRelease {
+		/// <inheritdoc />
 		public string name { get; set; }
 
+		/// <inheritdoc />
 		public string tag_name { get; set; }
 
+		/// <inheritdoc />
 		public DateTime published_at { get; set; }
 
+		/// <inheritdoc />
 		public string body { get; set; }
 
+		/// <inheritdoc />
 		IReadOnlyList<IAsset> IRelease.assets
-			=> assets.Select(a => a as IAsset).ToList().AsReadOnly();
+			=> _externalAssets;
+		private IReadOnlyList<IAsset> _externalAssets = new IAsset[0];
 
-		public Asset[] assets { get; set; }
+		/// <inheritdoc />
+		public Asset[] assets {
+			get => _assetsArray;
+			set {
+				_assetsArray = value ?? new Asset[0];
+				_externalAssets = _assetsArray.Select(a => a as IAsset).ToList().AsReadOnly();
+			}
+		}
+		private Asset[] _assetsArray;
 	}
 }

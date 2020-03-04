@@ -12,6 +12,9 @@ using au.IO.Web.API.GitHub.Types;
 using au.UI.TaskDialog;
 
 namespace au.UI.LatestVersion {
+	/// <summary>
+	/// Manages checking for and updating to the latest version of an application.
+	/// </summary>
 	public class VersionManager {
 		/// <summary>
 		/// Responses from the update available dialog.
@@ -52,7 +55,7 @@ namespace au.UI.LatestVersion {
 		/// <summary>
 		/// Testing constructor
 		/// </summary>
-		/// <param name="update">Task that will provide the result of an update check</param>
+		/// <param name="updates">Task that will provide the result of an update check</param>
 		internal VersionManager(IUpdateChecker updates) {
 			_updates = updates;
 		}
