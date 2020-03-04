@@ -1,7 +1,10 @@
 /.axoCover
 /.vs
 /bin
-/IO.Files.FileOperation/obj
+/IO/Files.FileOperation/obj
+/IO/Web.API.GitHub/obj
+/IO/Web.API.GitHub/Tests/obj
+/IO/Web.API.GitHub/Types/obj
 /packages
 /Settings/obj
 /Settings/Tests/obj
@@ -9,4 +12,6 @@
 /UI/CaptionedPictureBox/obj
 /UI/DirectoryBox/obj
 /UI/DirectoryBox/Tests/obj
+/UI/LatestVersion/obj
+/UI/LatestVersion/Tests/obj
 /UI/TaskDialog/obj

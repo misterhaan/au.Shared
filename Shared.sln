@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Settings", "Settings\Settin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Settings.Tests", "Settings\Tests\Settings.Tests.csproj", "{9E83EBC9-BE76-46FC-B77F-7DC6B64E8564}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Files.FileOperation", "IO.Files.FileOperation\IO.Files.FileOperation.csproj", "{57F6EF31-F4E2-4C8D-ADFE-6798B06A5711}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Files.FileOperation", "IO\Files.FileOperation\IO.Files.FileOperation.csproj", "{57F6EF31-F4E2-4C8D-ADFE-6798B06A5711}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Settings.Types", "Settings\Types\Settings.Types.csproj", "{8C6FB7C0-7A13-431A-BE83-4DFA272EB01C}"
 EndProject
@@ -23,6 +23,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.DirectoryBox.Tests", "UI\DirectoryBox\Tests\UI.DirectoryBox.Tests.csproj", "{11890FDE-FFFD-497C-BCC4-DA2B40DB7027}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.CaptionedPictureBox", "UI\CaptionedPictureBox\UI.CaptionedPictureBox.csproj", "{EE14B9AA-15B4-4B02-981D-377C18F4002A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Web.API.GitHub", "IO\Web.API.GitHub\IO.Web.API.GitHub.csproj", "{075DA182-F59B-4EEC-8376-FA5DC5EA8362}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Web.API.GitHub.Types", "IO\Web.API.GitHub\Types\IO.Web.API.GitHub.Types.csproj", "{4747DCA2-D4C2-457F-B5CB-24B9CA82C505}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Web.API.GitHub.Tests", "IO\Web.API.GitHub\Tests\IO.Web.API.GitHub.Tests.csproj", "{D5193A92-5929-46ED-AC6F-CEBCD9FBD21A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.LatestVersion", "UI\LatestVersion\UI.LatestVersion.csproj", "{0C9EDA65-5266-4177-9308-481D6F22A6BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.LatestVersion.Tests", "UI\LatestVersion\Tests\UI.LatestVersion.Tests.csproj", "{58104F7D-16C1-4B50-A6E2-17B43667811B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +70,24 @@ Global
 		{EE14B9AA-15B4-4B02-981D-377C18F4002A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE14B9AA-15B4-4B02-981D-377C18F4002A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE14B9AA-15B4-4B02-981D-377C18F4002A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{075DA182-F59B-4EEC-8376-FA5DC5EA8362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{075DA182-F59B-4EEC-8376-FA5DC5EA8362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{075DA182-F59B-4EEC-8376-FA5DC5EA8362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{075DA182-F59B-4EEC-8376-FA5DC5EA8362}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4747DCA2-D4C2-457F-B5CB-24B9CA82C505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4747DCA2-D4C2-457F-B5CB-24B9CA82C505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4747DCA2-D4C2-457F-B5CB-24B9CA82C505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4747DCA2-D4C2-457F-B5CB-24B9CA82C505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5193A92-5929-46ED-AC6F-CEBCD9FBD21A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5193A92-5929-46ED-AC6F-CEBCD9FBD21A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5193A92-5929-46ED-AC6F-CEBCD9FBD21A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C9EDA65-5266-4177-9308-481D6F22A6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C9EDA65-5266-4177-9308-481D6F22A6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C9EDA65-5266-4177-9308-481D6F22A6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C9EDA65-5266-4177-9308-481D6F22A6BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58104F7D-16C1-4B50-A6E2-17B43667811B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58104F7D-16C1-4B50-A6E2-17B43667811B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58104F7D-16C1-4B50-A6E2-17B43667811B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

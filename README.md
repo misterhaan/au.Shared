@@ -9,6 +9,9 @@ Some assemblies have their interface types in a separate Types DLL.  Generally c
 ### au.IO.Files.FileOperation
 Provides access to the Windows Explorer file move / copy dialog.  Requires Windows Vista or newer.
 
+### au.IO.Web.API.GitHub
+Provides access to the GitHub web API.
+
 ### au.Settings
 Saving and loading application settings files, and a settings object to save initial form state.
 
@@ -22,6 +25,11 @@ Provides a control for selecting a directory.
 Provides access to the Windows Vista task dialog with large, customizable action buttons.
 
 ## Revision History
+### 5.1.0
+* Added libraries for checking for new releases on GitHub
+	* au.IO.Web.API.GitHub
+	* au.UI.LatestVersion
+
 ### 5.0.0
 * Starting over from scratch in place of au.util
 * Created assemblies needed for [PhotoComb](https://github.com/misterhaan/PhotoComb) and [MythClient](https://github.com/misterhaan/MythClient)
