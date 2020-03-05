@@ -47,10 +47,17 @@ namespace au.IO.Web.API.GitHub {
 						: new UpdateCheckResult(EventLevel.Error, Messages.NoUpdateTitle, Messages.NoUpdateNoFiles)
 					: new UpdateCheckResult(EventLevel.Informational, Messages.NoUpdateTitle, Messages.NoUpdateAlreadyLatest);
 			} catch(WebException wex) {
-				if(wex.Status == WebExceptionStatus.ProtocolError && (wex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
-					return new UpdateCheckResult(EventLevel.Error, Messages.NoUpdateTitle, Messages.NoUpdateNoReleases);
-				// TODO:  better message for no internet connection / blocked by firewall / can't reach api.github.com
-				return new UpdateCheckResult(EventLevel.Error, Messages.NoUpdateTitle, Messages.NoUpdateError);
+				switch(wex.Status) {
+					case WebExceptionStatus.NameResolutionFailure:
+					case WebExceptionStatus.ConnectFailure:
+						return new UpdateCheckResult(EventLevel.Error, Messages.NoUpdateTitle, Messages.NoUpdateCannotConnect);
+					case WebExceptionStatus.ProtocolError:
+						if((wex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
+							return new UpdateCheckResult(EventLevel.Error, Messages.NoUpdateTitle, Messages.NoUpdateNoReleases);
+						goto default;  // we only handled not found, so anything else is a random other error
+					default:
+						return new UpdateCheckResult(EventLevel.Error, Messages.NoUpdateTitle, string.Format(Messages.NoUpdateError, wex.Message));
+				}
 			}
 		}
 

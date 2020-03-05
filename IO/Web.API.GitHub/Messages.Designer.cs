@@ -70,7 +70,17 @@ namespace au.IO.Web.API.GitHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unexpected error looking up latest release..
+        ///   Looks up a localized string similar to Cannot update because the update server is inaccessible..
+        /// </summary>
+        internal static string NoUpdateCannotConnect {
+            get {
+                return ResourceManager.GetString("NoUpdateCannotConnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected error looking up latest release:
+        ///{0}.
         /// </summary>
         internal static string NoUpdateError {
             get {
@@ -88,7 +98,7 @@ namespace au.IO.Web.API.GitHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot upgrade because there are no releases available for the application..
+        ///   Looks up a localized string similar to Cannot update because there are no releases available for the application..
         /// </summary>
         internal static string NoUpdateNoReleases {
             get {

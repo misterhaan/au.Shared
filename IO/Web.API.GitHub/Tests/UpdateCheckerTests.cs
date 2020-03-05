@@ -55,28 +55,42 @@ namespace au.IO.Web.API.GitHub.Tests {
 		}
 
 		[DataTestMethod]
+		[DataRow(WebExceptionStatus.NameResolutionFailure)]
+		[DataRow(WebExceptionStatus.ConnectFailure)]
+		public async Task CheckAsync_CannotConnect_NoUpdateCannotConnect(WebExceptionStatus status) {
+			WebException ex = GetWebException(status);
+			UpdateChecker updates = GetUpdateChecker("otherException", ex);
+
+			IUpdateCheckResult result = await updates.CheckAsync().ConfigureAwait(false);
+
+			Assert.IsFalse(result.Available, $"{nameof(updates.CheckAsync)}() should say there's no update available when unable to connect to the API server.");
+			Assert.AreEqual(Messages.NoUpdateCannotConnect, result.Description, $"{nameof(updates.CheckAsync)}() should use the {nameof(Messages.NoUpdateCannotConnect)} message when unable to connect to the API server.");
+		}
+
+		[DataTestMethod]
 		[DataRow(HttpStatusCode.BadGateway)]
 		[DataRow(HttpStatusCode.Unauthorized)]
 		public async Task CheckAsync_OtherProtocolException_NoUpdateError(HttpStatusCode status) {
-			UpdateChecker updates = GetUpdateChecker("otherProtocolException", GetHttpWebException(status));
+			WebException ex = GetHttpWebException(status);
+			UpdateChecker updates = GetUpdateChecker("otherProtocolException", ex);
 
 			IUpdateCheckResult result = await updates.CheckAsync().ConfigureAwait(false);
 
 			Assert.IsFalse(result.Available, $"{nameof(updates.CheckAsync)}() should say there's no update available when the API returns an error response other than 404 not found.");
-			Assert.AreEqual(Messages.NoUpdateError, result.Description, $"{nameof(updates.CheckAsync)}() should use the {nameof(Messages.NoUpdateError)} message when the API returns an error response other than 404 not found.");
+			Assert.AreEqual(string.Format(Messages.NoUpdateError, ex.Message), result.Description, $"{nameof(updates.CheckAsync)}() should use the {nameof(Messages.NoUpdateError)} message when the API returns an error response other than 404 not found.");
 		}
 
 		[DataTestMethod]
 		[DataRow(WebExceptionStatus.Timeout)]
-		[DataRow(WebExceptionStatus.ConnectFailure)]
 		[DataRow(WebExceptionStatus.UnknownError)]
 		public async Task CheckAsync_UnexpectedException_NoUpdateError(WebExceptionStatus status) {
-			UpdateChecker updates = GetUpdateChecker("otherException", GetWebException(status));
+			WebException ex = GetWebException(status);
+			UpdateChecker updates = GetUpdateChecker("otherException", ex);
 
 			IUpdateCheckResult result = await updates.CheckAsync().ConfigureAwait(false);
 
 			Assert.IsFalse(result.Available, $"{nameof(updates.CheckAsync)}() should say there's no update available when the API does not return a response.");
-			Assert.AreEqual(Messages.NoUpdateError, result.Description, $"{nameof(updates.CheckAsync)}() should use the {nameof(Messages.NoUpdateError)} message when the API does not return a response.");
+			Assert.AreEqual(string.Format(Messages.NoUpdateError, ex.Message), result.Description, $"{nameof(updates.CheckAsync)}() should use the {nameof(Messages.NoUpdateError)} message when the API does not return a response.");
 		}
 
 		private static UpdateChecker GetUpdateChecker(string repoName)

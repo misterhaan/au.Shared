@@ -120,14 +120,19 @@
   <data name="NoUpdateAlreadyLatest" xml:space="preserve">
     <value>No need to upgrade because the latest version is already installed.</value>
   </data>
+  <data name="NoUpdateCannotConnect" xml:space="preserve">
+    <value>Cannot update because the update server is inaccessible.</value>
+  </data>
   <data name="NoUpdateError" xml:space="preserve">
-    <value>Unexpected error looking up latest release.</value>
+    <value>Unexpected error looking up latest release:
+{0}</value>
+    <comment>0 is the exception message</comment>
   </data>
   <data name="NoUpdateNoFiles" xml:space="preserve">
     <value>Cannot update because the latest release does not include any files.</value>
   </data>
   <data name="NoUpdateNoReleases" xml:space="preserve">
-    <value>Cannot upgrade because there are no releases available for the application.</value>
+    <value>Cannot update because there are no releases available for the application.</value>
   </data>
   <data name="NoUpdateTitle" xml:space="preserve">
     <value>No Available Update</value>
