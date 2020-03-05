@@ -16,7 +16,7 @@ namespace au.IO.Web.API.GitHub.Tests {
 			IReposApi api = GetReposApi(_repoFake);
 			WebException caughtException = null;
 			try {
-				await api.LatestRelease();
+				await api.LatestRelease().ConfigureAwait(false);
 			} catch(WebException e) {
 				caughtException = e;
 			}
@@ -29,7 +29,7 @@ namespace au.IO.Web.API.GitHub.Tests {
 			IReposApi api = GetReposApi(_repoNoReleases);
 			WebException caughtException = null;
 			try {
-				await api.LatestRelease();
+				await api.LatestRelease().ConfigureAwait(false);
 			} catch(WebException e) {
 				caughtException = e;
 			}
@@ -40,7 +40,7 @@ namespace au.IO.Web.API.GitHub.Tests {
 		[TestMethod]
 		public async Task LatestRelease_MultipleReleases_ReturnsIRelease() {
 			IReposApi api = GetReposApi(_repoWithReleases);
-			IRelease latest = await api.LatestRelease();
+			IRelease latest = await api.LatestRelease().ConfigureAwait(false);
 			Assert.IsNotNull(latest, $"{nameof(api.LatestRelease)}() should return an IRelease object for a repo that has at least one release.");
 		}
 

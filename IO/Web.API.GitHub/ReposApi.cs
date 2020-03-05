@@ -16,6 +16,6 @@ namespace au.IO.Web.API.GitHub {
 
 		/// <inheritdoc />
 		public async Task<IRelease> LatestRelease()
-			=> await GetRequestAsync<Release>("releases/latest");
+			=> await GetRequestAsync<Release>("releases/latest").ConfigureAwait(false);
 	}
 }

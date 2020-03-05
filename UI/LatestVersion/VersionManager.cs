@@ -65,7 +65,7 @@ namespace au.UI.LatestVersion {
 		/// </summary>
 		/// <param name="owner">Owner window for dialogs</param>
 		public async Task PromptForUpdate(IWin32Window owner)
-			=> await PromptForUpdate(owner, false);
+			=> await PromptForUpdate(owner, false).ConfigureAwait(false);
 
 		/// <summary>
 		/// Prompt to update if there's a newer version available.
@@ -87,14 +87,14 @@ namespace au.UI.LatestVersion {
 				}.Show(owner)) {
 					case UpdateDialogResponse.DownloadInstall:
 						string installerFilename = Path.Combine(KnownFolders.Temp, Path.GetFileName(update.Url.LocalPath));
-						await DownloadUpdate(update.Url, installerFilename);
+						await DownloadUpdate(update.Url, installerFilename).ConfigureAwait(false);
 						Process.Start("msiexec", $"/i \"{installerFilename}\" RESTART=1");  // installer should have a custom action to launch the application with the condition RESTART=1
 						Application.Exit();
 						break;
 					case UpdateDialogResponse.DownloadOnly:
 						string downloadFilename = PromptForSaveLocation(owner, update.Url);
 						if(!string.IsNullOrEmpty(downloadFilename))
-							await DownloadUpdate(update.Url, downloadFilename);
+							await DownloadUpdate(update.Url, downloadFilename).ConfigureAwait(false);
 						break;
 					case UpdateDialogResponse.Cancel:
 						// Nothing to do because user chose not to update
@@ -149,9 +149,9 @@ namespace au.UI.LatestVersion {
 			if(!localFile.Directory.Exists)
 				Directory.CreateDirectory(localFile.DirectoryName);
 			WebRequest request = HttpWebRequest.Create(url);
-			using(WebResponse response = await request.GetResponseAsync())
+			using(WebResponse response = await request.GetResponseAsync().ConfigureAwait(false))
 			using(FileStream fileStream = localFile.Create())
-				await response.GetResponseStream().CopyToAsync(fileStream);
+				await response.GetResponseStream().CopyToAsync(fileStream).ConfigureAwait(false);
 		}
 
 		/// <summary>

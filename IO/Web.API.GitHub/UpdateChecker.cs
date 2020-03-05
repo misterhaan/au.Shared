@@ -39,7 +39,7 @@ namespace au.IO.Web.API.GitHub {
 		public async Task<IUpdateCheckResult> CheckAsync() {
 			IReposApi api = _apiFactory.BuildReposApi(_username, _repoName);
 			try {
-				IRelease latest = await api.LatestRelease();
+				IRelease latest = await api.LatestRelease().ConfigureAwait(false);
 				Version latestVersion = new Version(latest.tag_name.TrimStart('v'));
 				return latestVersion > ApplicationVersion
 					? latest.assets.Any()

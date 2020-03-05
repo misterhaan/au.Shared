@@ -19,7 +19,7 @@ namespace au.IO.Web.API.GitHub.Tests {
 		public async Task CheckAsync_SameVersion_NoUpdateAlreadyLatest() {
 			UpdateChecker updates = GetUpdateChecker(_repoSameVersion);
 
-			IUpdateCheckResult result = await updates.CheckAsync();
+			IUpdateCheckResult result = await updates.CheckAsync().ConfigureAwait(false);
 
 			Assert.IsFalse(result.Available, $"{nameof(updates.CheckAsync)}() should say there's no update available when the latest version matches the current version.");
 			Assert.AreEqual(Messages.NoUpdateAlreadyLatest, result.Description, $"{nameof(updates.CheckAsync)}() should use the {nameof(Messages.NoUpdateAlreadyLatest)} message when the latest version matches the current version.");
@@ -29,7 +29,7 @@ namespace au.IO.Web.API.GitHub.Tests {
 		public async Task CheckAsync_NewerVersion_UpdateAvailable() {
 			UpdateChecker updates = GetUpdateChecker(_repoNewerVersion);
 
-			IUpdateCheckResult result = await updates.CheckAsync();
+			IUpdateCheckResult result = await updates.CheckAsync().ConfigureAwait(false);
 
 			Assert.IsTrue(result.Available, $"{nameof(updates.CheckAsync)}() should say there's an update available when the latest version is newer than the current version.");
 		}
@@ -38,7 +38,7 @@ namespace au.IO.Web.API.GitHub.Tests {
 		public async Task CheckAsync_NoFiles_NoUpdateNoFiles() {
 			UpdateChecker updates = GetUpdateChecker(_repoNoFiles);
 
-			IUpdateCheckResult result = await updates.CheckAsync();
+			IUpdateCheckResult result = await updates.CheckAsync().ConfigureAwait(false);
 
 			Assert.IsFalse(result.Available, $"{nameof(updates.CheckAsync)}() should say there's no update available when the latest version has no files.");
 			Assert.AreEqual(Messages.NoUpdateNoFiles, result.Description, $"{nameof(updates.CheckAsync)}() should use the {nameof(Messages.NoUpdateNoFiles)} message when the latest version has no files.");
@@ -48,7 +48,7 @@ namespace au.IO.Web.API.GitHub.Tests {
 		public async Task CheckAsync_NotFoundException_NoUpdateNoReleases() {
 			UpdateChecker updates = GetUpdateChecker("notFound", GetHttpWebException(HttpStatusCode.NotFound));
 
-			IUpdateCheckResult result = await updates.CheckAsync();
+			IUpdateCheckResult result = await updates.CheckAsync().ConfigureAwait(false);
 
 			Assert.IsFalse(result.Available, $"{nameof(updates.CheckAsync)}() should say there's no update available when there are no releases for the repo or it doesn't exist.");
 			Assert.AreEqual(Messages.NoUpdateNoReleases, result.Description, $"{nameof(updates.CheckAsync)}() should use the {nameof(Messages.NoUpdateNoReleases)} message when there are no releases for the repo or it doesn't exist.");
@@ -60,7 +60,7 @@ namespace au.IO.Web.API.GitHub.Tests {
 		public async Task CheckAsync_OtherProtocolException_NoUpdateError(HttpStatusCode status) {
 			UpdateChecker updates = GetUpdateChecker("otherProtocolException", GetHttpWebException(status));
 
-			IUpdateCheckResult result = await updates.CheckAsync();
+			IUpdateCheckResult result = await updates.CheckAsync().ConfigureAwait(false);
 
 			Assert.IsFalse(result.Available, $"{nameof(updates.CheckAsync)}() should say there's no update available when the API returns an error response other than 404 not found.");
 			Assert.AreEqual(Messages.NoUpdateError, result.Description, $"{nameof(updates.CheckAsync)}() should use the {nameof(Messages.NoUpdateError)} message when the API returns an error response other than 404 not found.");
@@ -73,7 +73,7 @@ namespace au.IO.Web.API.GitHub.Tests {
 		public async Task CheckAsync_UnexpectedException_NoUpdateError(WebExceptionStatus status) {
 			UpdateChecker updates = GetUpdateChecker("otherException", GetWebException(status));
 
-			IUpdateCheckResult result = await updates.CheckAsync();
+			IUpdateCheckResult result = await updates.CheckAsync().ConfigureAwait(false);
 
 			Assert.IsFalse(result.Available, $"{nameof(updates.CheckAsync)}() should say there's no update available when the API does not return a response.");
 			Assert.AreEqual(Messages.NoUpdateError, result.Description, $"{nameof(updates.CheckAsync)}() should use the {nameof(Messages.NoUpdateError)} message when the API does not return a response.");
