@@ -10,7 +10,7 @@ Some assemblies have their interface types in a separate Types DLL.  Generally c
 Provides access to the Windows Explorer file move / copy dialog.  Requires Windows Vista or newer.
 
 ### au.IO.Web.API.GitHub
-Provides access to the GitHub web API.
+Provides access to the GitHub web API.  Currently used by au.UI.LatestVersion.
 
 ### au.Settings
 Saving and loading application settings files, and a settings object to save initial form state.
@@ -28,6 +28,10 @@ Provides dialogs for checking for, downloading, and installing application updat
 Provides access to the Windows Vista task dialog with large, customizable action buttons.
 
 ## Revision History
+### 5.1.1
+* Improved threading for update checking
+* Better error message when update checker can’t connect to server
+
 ### 5.1.0
 * Added libraries for checking for new releases on GitHub
 	* au.IO.Web.API.GitHub
