@@ -6,7 +6,7 @@ namespace au.IO.Files.FileOperation {
 	internal class ShellItemFactory {
 		private static Guid _shellItemGuid = typeof(IShellItem).GUID;
 
-		internal ComDisposer<IShellItem> Create(string path)
+		internal virtual ComDisposer<IShellItem> Create(string path)
 			=> new ComDisposer<IShellItem>((IShellItem)SHCreateItemFromParsingName(path, null, ref _shellItemGuid));
 
 		[DllImport("shell32.dll", SetLastError = true, CharSet = CharSet.Unicode, PreserveSig = false)]

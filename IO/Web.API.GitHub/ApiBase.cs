@@ -34,11 +34,11 @@ namespace au.IO.Web.API.GitHub {
 		protected async Task<T> GetRequestAsync<T>(string relativeUrl) {
 			HttpWebRequest request = WebRequest.CreateHttp(new Uri(_urlBase, relativeUrl));
 			request.UserAgent = "misterhaan/au.Shared";  // GitHub requires a useragent and requests that it contain the repo containing the code
-			using(WebResponse response = await request.GetResponseAsync().ConfigureAwait(false))
-			using(Stream responseStream = response.GetResponseStream())
-			using(StreamReader reader = new StreamReader(responseStream))
-			using(JsonReader json = new JsonTextReader(reader))
-				return new JsonSerializer().Deserialize<T>(json);
+			using WebResponse response = await request.GetResponseAsync().ConfigureAwait(false);
+			using Stream responseStream = response.GetResponseStream();
+			using StreamReader reader = new StreamReader(responseStream);
+			using JsonReader json = new JsonTextReader(reader);
+			return new JsonSerializer().Deserialize<T>(json);
 		}
 	}
 }

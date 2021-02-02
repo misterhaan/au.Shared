@@ -23,13 +23,13 @@ namespace au.IO.Web.API.GitHub {
 		/// <inheritdoc />
 		IReadOnlyList<IAsset> IRelease.assets
 			=> _externalAssets;
-		private IReadOnlyList<IAsset> _externalAssets = new IAsset[0];
+		private IReadOnlyList<IAsset> _externalAssets = Array.Empty<IAsset>();
 
 		/// <inheritdoc />
 		public Asset[] assets {
 			get => _assetsArray;
 			set {
-				_assetsArray = value ?? new Asset[0];
+				_assetsArray = value ?? Array.Empty<Asset>();
 				_externalAssets = _assetsArray.Select(a => a as IAsset).ToList().AsReadOnly();
 			}
 		}

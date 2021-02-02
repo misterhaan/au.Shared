@@ -74,7 +74,7 @@ namespace au.IO.Web.API.GitHub {
 			string bitnessFilter = Environment.Is64BitProcess
 				? "_x64"
 				: "_x86";
-			IAsset bestAsset = latest.assets.FirstOrDefault(asset => asset.name.Contains(bitnessFilter)) ?? latest.assets.FirstOrDefault();
+			IAsset bestAsset = latest.assets.FirstOrDefault(asset => asset.name.Contains(bitnessFilter)) ?? latest.assets?[0];
 			return new UpdateCheckResult(latest.name, latest.body, bestAsset.size, bestAsset.browser_download_url);
 		}
 	}

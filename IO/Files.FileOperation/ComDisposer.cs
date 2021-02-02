@@ -13,7 +13,7 @@ namespace au.IO.Files.FileOperation {
 		/// <param name="obj">COM object that needs to be released.</param>
 		internal ComDisposer(T obj) {
 			if(obj != null && !obj.GetType().IsCOMObject)
-				throw new ArgumentOutOfRangeException("Object must be a COM object.", nameof(obj));
+				throw new ArgumentOutOfRangeException(nameof(obj), "Object must be a COM object.");
 			Value = obj;
 		}
 

@@ -34,7 +34,8 @@ namespace au.IO.Files.FileOperation {
 		/// </summary>
 		/// <param name="source">File to copy from (must exist).</param>
 		/// <param name="dest">File to copy to (will be created or overwritten).</param>
-		public void Queue(FileInfo source, FileInfo dest) { Queue(source.FullName, dest.Directory.FullName, dest.Name); }
+		public void Queue(FileInfo source, FileInfo dest)
+			=> Queue(source.FullName, dest.Directory.FullName, dest.Name);
 
 		/// <summary>
 		/// Add a file copy operation to the queue.
@@ -42,7 +43,8 @@ namespace au.IO.Files.FileOperation {
 		/// <param name="source">File to copy from (must exist).</param>
 		/// <param name="destPath">Full path without filename to copy to (must exist).</param>
 		/// <param name="destFilename">Filename without path to copy to (will be created or overwritten).</param>
-		public void Queue(FileInfo source, string destPath, string destFilename) { Queue(source.FullName, destPath, destFilename); }
+		public void Queue(FileInfo source, string destPath, string destFilename)
+			=> Queue(source.FullName, destPath, destFilename);
 
 		/// <summary>
 		/// Add a file copy operation to the queue.
@@ -51,9 +53,9 @@ namespace au.IO.Files.FileOperation {
 		/// <param name="destPath">Full path without filename to copy to (must exist).</param>
 		/// <param name="destFilename">Filename without path to copy to (will be created or overwritten).</param>
 		public void Queue(string source, string destPath, string destFilename) {
-			using(ComDisposer<IShellItem> sourceItem = _shellItemFactory.Create(source))
-			using(ComDisposer<IShellItem> destinationItem = _shellItemFactory.Create(destPath))
-				_fileOperation.CopyItem(sourceItem.Value, destinationItem.Value, destFilename, null);
+			using ComDisposer<IShellItem> sourceItem = _shellItemFactory.Create(source);
+			using ComDisposer<IShellItem> destinationItem = _shellItemFactory.Create(destPath);
+			_fileOperation.CopyItem(sourceItem.Value, destinationItem.Value, destFilename, null);
 		}
 
 		/// <summary>
@@ -64,6 +66,7 @@ namespace au.IO.Files.FileOperation {
 				_fileOperation.PerformOperations();
 			} catch { }  // if something goes wrong the IFileOperation UI will tell the user so we don't have to
 			Marshal.FinalReleaseComObject(_fileOperation);
+			GC.SuppressFinalize(this);
 		}
 	}
 }

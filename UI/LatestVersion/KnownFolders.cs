@@ -35,14 +35,21 @@ namespace au.UI.LatestVersion {
 			Guid folderId = new Guid(guid);
 			IntPtr pathPtr = IntPtr.Zero;
 			try {
-				SHGetKnownFolderPath(ref folderId, 0, IntPtr.Zero, out pathPtr);
-				return Marshal.PtrToStringUni(pathPtr);
+				return (SHGetKnownFolderPath(ref folderId, 0, IntPtr.Zero, out pathPtr)) switch {
+					0  // S_OK
+						=> Marshal.PtrToStringUni(pathPtr),
+					0x80070057  // E_INVALIDARG 0x80070057
+						=> throw new DirectoryNotFoundException("Requested folder not defined on this system"),
+					0x80004005  // E_FAIL
+						=> throw new Exception("Failed to get folder path"),
+					_ => throw new Exception($"Unexpected response from {nameof(SHGetKnownFolderPath)}"),
+				};
 			} finally {
 				Marshal.FreeCoTaskMem(pathPtr);
 			}
 		}
 
 		[DllImport("shell32.dll", CharSet = CharSet.Auto)]
-		private static extern int SHGetKnownFolderPath(ref Guid id, int flags, IntPtr token, out IntPtr path);
+		private static extern uint SHGetKnownFolderPath(ref Guid id, int flags, IntPtr token, out IntPtr path);
 	}
 }
