@@ -65,6 +65,6 @@ namespace au.IO.Web.API.GitHub {
 		/// Get the version of the application.
 		/// </summary>
 		private static Version ApplicationVersion
-			=> (Assembly.GetEntryAssembly() ?? Assembly.GetExecutingAssembly()).GetName().Version;
+			=> Assembly.GetEntryAssembly().GetName().Version;
 	}
 }

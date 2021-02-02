@@ -15,3 +15,4 @@
 /UI/LatestVersion/obj
 /UI/LatestVersion/Tests/obj
 /UI/TaskDialog/obj
+*.csproj.user

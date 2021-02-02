@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net;
 using System.Reflection;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using au.IO.Web.API.GitHub.Types;
 using FakeItEasy;
@@ -144,39 +143,22 @@ namespace au.IO.Web.API.GitHub.Tests {
 		}
 
 		private static string GetThisVersion() {
-			Version version = Assembly.GetExecutingAssembly().GetName().Version;
+			Version version = Assembly.GetEntryAssembly().GetName().Version;
 			return version.Major + "." + version.Minor + "." + version.Build;
 		}
 
 		private static string GetNewerVersion() {
-			Version version = Assembly.GetExecutingAssembly().GetName().Version;
+			Version version = Assembly.GetEntryAssembly().GetName().Version;
 			return 1 + version.Major + "." + version.Minor + "." + version.Build;
 		}
 
 		private static WebException GetHttpWebException(HttpStatusCode statusCode) {
-			SerializationInfo info = new SerializationInfo(typeof(HttpWebResponse), new FormatterConverter());
-			info.AddValue("m_StatusCode", statusCode);
-			info.AddValue("m_HttpResponseHeaders", new WebHeaderCollection());
-			info.AddValue("m_Uri", new Uri("test://localhost/"));
-			info.AddValue("m_Certificate", null);
-			info.AddValue("m_Version", HttpVersion.Version11);
-			info.AddValue("m_ContentLength", 0);
-			info.AddValue("m_Verb", "GET");
-			info.AddValue("m_StatusDescription", "test response");
-			info.AddValue("m_MediaType", null);
-			HttpWebResponse webResponse = new TestHttpWebResponse(info, new StreamingContext());
+			HttpWebResponse webResponse = A.Fake<HttpWebResponse>();
+			A.CallTo(() => webResponse.StatusCode).Returns(statusCode);
 			return new WebException(nameof(GetHttpWebException), new Exception(), WebExceptionStatus.ProtocolError, webResponse);
 		}
 
 		private static WebException GetWebException(WebExceptionStatus status)
 			=> new WebException(nameof(GetWebException), new Exception(), status, A.Fake<WebResponse>());
-
-		private class TestHttpWebResponse : HttpWebResponse {
-			public TestHttpWebResponse(SerializationInfo serializationInfo, StreamingContext streamingContext)
-#pragma warning disable 0618
-				// i know this is deprecated but for now it's a way to fake an HttpWebResponse
-				: base(serializationInfo, streamingContext) { }
-#pragma warning restore 0618
-		}
 	}
 }

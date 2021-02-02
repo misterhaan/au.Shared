@@ -24,10 +24,11 @@ Provides a control for selecting a directory.
 ### au.UI.LatestVersion
 Provides dialogs for checking for, downloading, and installing application updates.
 
-### au.UI.TaskDialog
-Provides access to the Windows Vista task dialog with large, customizable action buttons.
-
 ## Revision History
+### 6.0.0
+* Update to .NET 5.0 (older .NET Framework projects will need to stay on older versions)
+* Removed au.UI.TaskDialog since .NET 5.0 provides it
+
 ### 5.1.1
 * Improved threading for update checking
 * Better error message when update checker can’t connect to server

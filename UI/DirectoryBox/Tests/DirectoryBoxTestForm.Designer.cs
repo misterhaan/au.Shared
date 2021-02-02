@@ -123,8 +123,8 @@
 			// 
 			// _txtDirectory
 			// 
-			this._txtDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this._txtDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this._txtDirectory.Location = new System.Drawing.Point(81, 64);
 			this._txtDirectory.Name = "_txtDirectory";
 			this._txtDirectory.Size = new System.Drawing.Size(349, 20);
@@ -141,8 +141,8 @@
 			// 
 			// _txtDescription
 			// 
-			this._txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this._txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this._txtDescription.Location = new System.Drawing.Point(81, 38);
 			this._txtDescription.Name = "_txtDescription";
 			this._txtDescription.Size = new System.Drawing.Size(394, 20);
@@ -160,8 +160,8 @@
 			// 
 			// _txtBasePath
 			// 
-			this._txtBasePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this._txtBasePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this._txtBasePath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
 			this._txtBasePath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
 			this._txtBasePath.Location = new System.Drawing.Point(81, 12);
@@ -173,8 +173,8 @@
 			// _dirTest
 			// 
 			this._dirTest.AllowCreation = true;
-			this._dirTest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this._dirTest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this._dirTest.BasePath = null;
 			this._dirTest.Location = new System.Drawing.Point(12, 151);
 			this._dirTest.Name = "_dirTest";
@@ -193,8 +193,8 @@
 			// 
 			// _txtText
 			// 
-			this._txtText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this._txtText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this._txtText.Location = new System.Drawing.Point(81, 90);
 			this._txtText.Name = "_txtText";
 			this._txtText.ReadOnly = true;

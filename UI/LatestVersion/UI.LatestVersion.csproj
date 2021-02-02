@@ -1,75 +1,49 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0C9EDA65-5266-4177-9308-481D6F22A6BD}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>au.UI.LatestVersion</RootNamespace>
-    <AssemblyName>au.UI.LatestVersion</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>..\..\bin\Release\au.UI.LatestVersion.xml</DocumentationFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="..\..\AssemblyInfo.Common.cs">
-      <Link>Properties\AssemblyInfo.Common.cs</Link>
-    </Compile>
-    <Compile Include="Dialog.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Dialog.resx</DependentUpon>
-    </Compile>
-    <Compile Include="KnownFolders.cs" />
-    <Compile Include="VersionManager.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\IO\Web.API.GitHub\IO.Web.API.GitHub.csproj">
-      <Project>{075da182-f59b-4eec-8376-fa5dc5ea8362}</Project>
-      <Name>IO.Web.API.GitHub</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\IO\Web.API.GitHub\Types\IO.Web.API.GitHub.Types.csproj">
-      <Project>{4747dca2-d4c2-457f-b5cb-24b9ca82c505}</Project>
-      <Name>IO.Web.API.GitHub.Types</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TaskDialog\UI.TaskDialog.csproj">
-      <Project>{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}</Project>
-      <Name>UI.TaskDialog</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Dialog.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Dialog.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<AssemblyName>au.UI.LatestVersion</AssemblyName>
+		<RootNamespace>au.UI.LatestVersion</RootNamespace>
+		<Description>Updates an application to its latest released version.</Description>
+		<Nullable></Nullable>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DefineConstants>TRACE</DefineConstants>
+		<OutputPath>..\..\bin\Debug\</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\..\bin\Release\</OutputPath>
+		<DocumentationFile>..\..\bin\Release\au.UI.LatestVersion.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Tests\**" />
+	  <EmbeddedResource Remove="Tests\**" />
+	  <None Remove="Tests\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\IO\Web.API.GitHub\IO.Web.API.GitHub.csproj" />
+	  <ProjectReference Include="..\..\IO\Web.API.GitHub\Types\IO.Web.API.GitHub.Types.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Dialog.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Dialog.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Dialog.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Dialog.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+	
+	<Import Project="..\..\PackageInfo.Common.proj" />
 </Project>

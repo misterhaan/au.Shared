@@ -36,27 +36,29 @@
 			// lblRepo
 			// 
 			lblRepo.AutoSize = true;
-			lblRepo.Location = new System.Drawing.Point(12, 15);
+			lblRepo.Location = new System.Drawing.Point(14, 17);
+			lblRepo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblRepo.Name = "lblRepo";
-			lblRepo.Size = new System.Drawing.Size(60, 13);
+			lblRepo.Size = new System.Drawing.Size(66, 15);
 			lblRepo.TabIndex = 0;
 			lblRepo.Text = "Repository:";
 			// 
 			// _txtUsername
 			// 
-			this._txtUsername.Location = new System.Drawing.Point(78, 12);
+			this._txtUsername.Location = new System.Drawing.Point(91, 14);
+			this._txtUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this._txtUsername.Name = "_txtUsername";
-			this._txtUsername.Size = new System.Drawing.Size(100, 20);
+			this._txtUsername.Size = new System.Drawing.Size(116, 23);
 			this._txtUsername.TabIndex = 1;
 			this._txtUsername.Text = "misterhaan";
 			// 
 			// lblRepoDivider
 			// 
 			this.lblRepoDivider.AutoSize = true;
-			this.lblRepoDivider.Location = new System.Drawing.Point(181, 15);
+			this.lblRepoDivider.Location = new System.Drawing.Point(211, 17);
 			this.lblRepoDivider.Margin = new System.Windows.Forms.Padding(0);
 			this.lblRepoDivider.Name = "lblRepoDivider";
-			this.lblRepoDivider.Size = new System.Drawing.Size(12, 13);
+			this.lblRepoDivider.Size = new System.Drawing.Size(12, 15);
 			this.lblRepoDivider.TabIndex = 2;
 			this.lblRepoDivider.Text = "/";
 			// 
@@ -64,9 +66,10 @@
 			// 
 			this._txtRepoName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 						| System.Windows.Forms.AnchorStyles.Right)));
-			this._txtRepoName.Location = new System.Drawing.Point(196, 12);
+			this._txtRepoName.Location = new System.Drawing.Point(229, 14);
+			this._txtRepoName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this._txtRepoName.Name = "_txtRepoName";
-			this._txtRepoName.Size = new System.Drawing.Size(257, 20);
+			this._txtRepoName.Size = new System.Drawing.Size(316, 23);
 			this._txtRepoName.TabIndex = 3;
 			// 
 			// _chkAlwaysShow
@@ -74,9 +77,10 @@
 			this._chkAlwaysShow.AutoSize = true;
 			this._chkAlwaysShow.Checked = true;
 			this._chkAlwaysShow.CheckState = System.Windows.Forms.CheckState.Checked;
-			this._chkAlwaysShow.Location = new System.Drawing.Point(15, 38);
+			this._chkAlwaysShow.Location = new System.Drawing.Point(18, 44);
+			this._chkAlwaysShow.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this._chkAlwaysShow.Name = "_chkAlwaysShow";
-			this._chkAlwaysShow.Size = new System.Drawing.Size(177, 17);
+			this._chkAlwaysShow.Size = new System.Drawing.Size(193, 19);
 			this._chkAlwaysShow.TabIndex = 4;
 			this._chkAlwaysShow.Text = "Show no available update result";
 			this._chkAlwaysShow.UseVisualStyleBackColor = true;
@@ -84,9 +88,10 @@
 			// _btnPrompt
 			// 
 			this._btnPrompt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this._btnPrompt.Location = new System.Drawing.Point(262, 61);
+			this._btnPrompt.Location = new System.Drawing.Point(323, 58);
+			this._btnPrompt.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this._btnPrompt.Name = "_btnPrompt";
-			this._btnPrompt.Size = new System.Drawing.Size(110, 23);
+			this._btnPrompt.Size = new System.Drawing.Size(128, 27);
 			this._btnPrompt.TabIndex = 5;
 			this._btnPrompt.Text = "PromptForUpdate";
 			this._btnPrompt.UseVisualStyleBackColor = true;
@@ -96,9 +101,10 @@
 			// 
 			this._btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this._btnClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this._btnClose.Location = new System.Drawing.Point(378, 61);
+			this._btnClose.Location = new System.Drawing.Point(458, 58);
+			this._btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this._btnClose.Name = "_btnClose";
-			this._btnClose.Size = new System.Drawing.Size(75, 23);
+			this._btnClose.Size = new System.Drawing.Size(88, 27);
 			this._btnClose.TabIndex = 6;
 			this._btnClose.Text = "Close";
 			this._btnClose.UseVisualStyleBackColor = true;
@@ -107,10 +113,10 @@
 			// VersionManagerTestForm
 			// 
 			this.AcceptButton = this._btnPrompt;
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this._btnClose;
-			this.ClientSize = new System.Drawing.Size(461, 92);
+			this.ClientSize = new System.Drawing.Size(550, 90);
 			this.ControlBox = false;
 			this.Controls.Add(this._btnClose);
 			this.Controls.Add(this._btnPrompt);
@@ -120,6 +126,7 @@
 			this.Controls.Add(this._txtUsername);
 			this.Controls.Add(lblRepo);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "VersionManagerTestForm";

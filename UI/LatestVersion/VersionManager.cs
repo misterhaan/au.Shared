@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Tracing;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using au.IO.Web.API.GitHub;
 using au.IO.Web.API.GitHub.Types;
-using au.UI.TaskDialog;
 
 namespace au.UI.LatestVersion {
 	/// <summary>
@@ -76,15 +73,14 @@ namespace au.UI.LatestVersion {
 			IUpdateCheckResult update = await _updates.CheckAsync();
 
 			if(update.Available) {
-				switch((UpdateDialogResponse)new TaskDialog.TaskDialog {
-					WindowTitle = Dialog.UpdateAvailableTitle,
-					MainInstruction = string.Format(Dialog.UpdateAvailableDescription, update.Name),
-					Content = update.Description,  // note:  description can contain markdown, which will be shown to the user
-					CommonButtons = TaskDialogCommonButtons.Cancel,
-					Buttons = GetUpdateDialogButtons(update.Url).ToArray(),
-					PositionRelativeToWindow = true,
-					UseCommandLinks = true
-				}.Show(owner)) {
+				TaskDialogButton response = TaskDialog.ShowDialog(owner, new TaskDialogPage {
+					Caption = Dialog.UpdateAvailableTitle,
+					Heading = string.Format(Dialog.UpdateAvailableDescription, update.Name),
+					Text = update.Description,  // note:  description can contain markdown, which will be shown to the user
+					Buttons = GetUpdateDialogButtons(update.Url),
+				});
+
+				switch(response.Tag as UpdateDialogResponse?) {
 					case UpdateDialogResponse.DownloadInstall:
 						string installerFilename = Path.Combine(KnownFolders.Temp, Path.GetFileName(update.Url.LocalPath));
 						await DownloadUpdate(update.Url, installerFilename).ConfigureAwait(false);
@@ -109,13 +105,24 @@ namespace au.UI.LatestVersion {
 		/// </summary>
 		/// <param name="updateUrl">URL to the latest version update</param>
 		/// <returns></returns>
-		private static IEnumerable<TaskDialogButton> GetUpdateDialogButtons(Uri updateUrl) {
+		private static TaskDialogButtonCollection GetUpdateDialogButtons(Uri updateUrl) {
+			TaskDialogButtonCollection buttons = new TaskDialogButtonCollection();
+
 			// install only works for msi
 			if(Path.GetExtension(updateUrl.LocalPath).Equals(".msi", StringComparison.OrdinalIgnoreCase))
-				yield return new TaskDialogButton((int)UpdateDialogResponse.DownloadInstall, Dialog.DownloadAndInstallUpdateOptionTitle, Dialog.DownloadAndInstallUpdateOptionDescription);
+				buttons.Add(new TaskDialogCommandLinkButton(Dialog.DownloadAndInstallUpdateOptionTitle, Dialog.DownloadAndInstallUpdateOptionDescription) {
+					Tag = UpdateDialogResponse.DownloadInstall
+				});
+
 			// all update package types can be downloaded or ignored
-			yield return new TaskDialogButton((int)UpdateDialogResponse.DownloadOnly, Dialog.DownloadUpdateOnlyOptionTitle, Dialog.DownloadUpdateOnlyOptionDescription);
-			yield return new TaskDialogButton((int)UpdateDialogResponse.Cancel, Dialog.IgnoreUpdateOptionTitle, Dialog.IgnoreUpdateOptionDescription);
+			buttons.Add(new TaskDialogCommandLinkButton(Dialog.DownloadUpdateOnlyOptionTitle, Dialog.DownloadUpdateOnlyOptionDescription) {
+				Tag = UpdateDialogResponse.DownloadOnly
+			});
+			buttons.Add(new TaskDialogCommandLinkButton(Dialog.IgnoreUpdateOptionTitle, Dialog.IgnoreUpdateOptionDescription) {
+				Tag = UpdateDialogResponse.Cancel
+			});
+
+			return buttons;
 		}
 
 		/// <summary>
@@ -131,12 +138,12 @@ namespace au.UI.LatestVersion {
 				InitialDirectory = KnownFolders.Downloads,
 				FileName = Path.GetFileName(url.LocalPath)
 			};
-			switch(dialog.ShowDialog(owner)) {
-				case DialogResult.OK:
-				case DialogResult.Yes:
-					return dialog.FileName;
-			}
-			return "";
+			return (dialog.ShowDialog(owner)) switch {
+				DialogResult.OK
+				or DialogResult.Yes
+					=> dialog.FileName,
+				_ => "",
+			};
 		}
 
 		/// <summary>
@@ -149,9 +156,9 @@ namespace au.UI.LatestVersion {
 			if(!localFile.Directory.Exists)
 				Directory.CreateDirectory(localFile.DirectoryName);
 			WebRequest request = HttpWebRequest.Create(url);
-			using(WebResponse response = await request.GetResponseAsync().ConfigureAwait(false))
-			using(FileStream fileStream = localFile.Create())
-				await response.GetResponseStream().CopyToAsync(fileStream).ConfigureAwait(false);
+			using WebResponse response = await request.GetResponseAsync().ConfigureAwait(false);
+			using FileStream fileStream = localFile.Create();
+			await response.GetResponseStream().CopyToAsync(fileStream).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -160,20 +167,19 @@ namespace au.UI.LatestVersion {
 		/// <param name="level">Event level to convert</param>
 		/// <returns>Message box icon equilavent of level</returns>
 		private static MessageBoxIcon EventLevelToMessageBoxIcon(EventLevel level) {
-			switch(level) {
-				case EventLevel.Critical:
-					return MessageBoxIcon.Stop;
-				case EventLevel.Error:
-					return MessageBoxIcon.Error;
-				case EventLevel.Warning:
-					return MessageBoxIcon.Warning;
-				case EventLevel.Informational:
-					return MessageBoxIcon.Information;
-				case EventLevel.Verbose:
-					return MessageBoxIcon.Asterisk;
-				default:
-					return MessageBoxIcon.None;
-			}
+			return level switch {
+				EventLevel.Critical
+					=> MessageBoxIcon.Stop,
+				EventLevel.Error
+					=> MessageBoxIcon.Error,
+				EventLevel.Warning
+					=> MessageBoxIcon.Warning,
+				EventLevel.Informational
+					=> MessageBoxIcon.Information,
+				EventLevel.Verbose
+					=> MessageBoxIcon.Asterisk,
+				_ => MessageBoxIcon.None,
+			};
 		}
 	}
 }
