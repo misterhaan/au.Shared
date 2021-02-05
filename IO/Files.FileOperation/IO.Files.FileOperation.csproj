@@ -15,7 +15,7 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	  <OutputPath>..\..\bin\Release\</OutputPath>
-	  <DocumentationFile>..\..\bin\Release\Files.FileOperation.xml</DocumentationFile>
+	  <DocumentationFile>..\..\bin\Release\au.IO.Files.FileOperation.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<Import Project="..\..\PackageInfo.Common.proj" />
