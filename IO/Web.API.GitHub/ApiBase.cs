@@ -1,8 +1,8 @@
 ﻿using System;
-using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace au.IO.Web.API.GitHub {
 	/// <summary>
@@ -32,13 +32,9 @@ namespace au.IO.Web.API.GitHub {
 		/// <param name="relativeUrl">Request URL relative to the base URL built in the constructor</param>
 		/// <returns>API response as the requested type</returns>
 		protected async Task<T> GetRequestAsync<T>(string relativeUrl) {
-			HttpWebRequest request = WebRequest.CreateHttp(new Uri(_urlBase, relativeUrl));
-			request.UserAgent = "misterhaan/au.Shared";  // GitHub requires a useragent and requests that it contain the repo containing the code
-			using WebResponse response = await request.GetResponseAsync().ConfigureAwait(false);
-			using Stream responseStream = response.GetResponseStream();
-			using StreamReader reader = new(responseStream);
-			using JsonTextReader json = new(reader);
-			return new JsonSerializer().Deserialize<T>(json);
+			using HttpClient client = new();
+			client.DefaultRequestHeaders.UserAgent.ParseAdd("misterhaan/au.Shared");  // GitHub requires a useragent and requests that it contain the repo containing the code
+			return await client.GetFromJsonAsync<T>(new Uri(_urlBase, relativeUrl)).ConfigureAwait(false);
 		}
 	}
 }

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.Tracing;
 using System.IO;
-using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using au.IO.Web.API.GitHub;
@@ -155,10 +155,10 @@ namespace au.UI.LatestVersion {
 			FileInfo localFile = new(localFilename);
 			if(!localFile.Directory.Exists)
 				Directory.CreateDirectory(localFile.DirectoryName);
-			WebRequest request = HttpWebRequest.Create(url);
-			using WebResponse response = await request.GetResponseAsync().ConfigureAwait(false);
+			using HttpClient client = new();
+			using Stream responseStream = await client.GetStreamAsync(url).ConfigureAwait(false);
 			using FileStream fileStream = localFile.Create();
-			await response.GetResponseStream().CopyToAsync(fileStream).ConfigureAwait(false);
+			await responseStream.CopyToAsync(fileStream).ConfigureAwait(false);
 		}
 
 		/// <summary>
