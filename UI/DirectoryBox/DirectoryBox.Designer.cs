@@ -41,7 +41,7 @@
 			this._txtDirectory.Name = "_txtDirectory";
 			this._txtDirectory.Size = new System.Drawing.Size(100, 20);
 			this._txtDirectory.TabIndex = 0;
-			this._txtDirectory.Validating += new System.ComponentModel.CancelEventHandler(this._txtDirectory_Validating);
+			this._txtDirectory.Validating += new System.ComponentModel.CancelEventHandler(this.TxtDirectory_Validating);
 			// 
 			// _btnBrowse
 			// 
@@ -56,11 +56,11 @@
 			this._btnBrowse.Size = new System.Drawing.Size(18, 18);
 			this._btnBrowse.TabIndex = 1;
 			this._btnBrowse.UseVisualStyleBackColor = true;
-			this._btnBrowse.Click += new System.EventHandler(this._btnBrowse_Click);
-			this._btnBrowse.Enter += new System.EventHandler(this._btnBrowse_Enter);
-			this._btnBrowse.Leave += new System.EventHandler(this._btnBrowse_Leave);
-			this._btnBrowse.MouseEnter += new System.EventHandler(this._btnBrowse_MouseEnter);
-			this._btnBrowse.MouseLeave += new System.EventHandler(this._btnBrowse_MouseLeave);
+			this._btnBrowse.Click += new System.EventHandler(this.BtnBrowse_Click);
+			this._btnBrowse.Enter += new System.EventHandler(this.BtnBrowse_Enter);
+			this._btnBrowse.Leave += new System.EventHandler(this.BtnBrowse_Leave);
+			this._btnBrowse.MouseEnter += new System.EventHandler(this.BtnBrowse_MouseEnter);
+			this._btnBrowse.MouseLeave += new System.EventHandler(this.BtnBrowse_MouseLeave);
 			// 
 			// _folderBrowseDialog
 			// 

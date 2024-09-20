@@ -23,16 +23,18 @@ namespace au.IO.Web.API.GitHub {
 		/// <inheritdoc />
 		IReadOnlyList<IAsset> IRelease.assets
 			=> _externalAssets;
-		private IReadOnlyList<IAsset> _externalAssets = Array.Empty<IAsset>();
+		private IReadOnlyList<IAsset> _externalAssets = [];
 
+#pragma warning disable IDE1006 // Naming Styles
 		/// <inheritdoc />
 		public Asset[] assets {
 			get => _assetsArray;
 			set {
-				_assetsArray = value ?? Array.Empty<Asset>();
+				_assetsArray = value ?? [];
 				_externalAssets = _assetsArray.Select(a => a as IAsset).ToList().AsReadOnly();
 			}
 		}
 		private Asset[] _assetsArray;
+#pragma warning restore IDE1006 // Naming Styles
 	}
 }

@@ -36,8 +36,8 @@ namespace au.IO.Web.API.GitHub {
 			request.UserAgent = "misterhaan/au.Shared";  // GitHub requires a useragent and requests that it contain the repo containing the code
 			using WebResponse response = await request.GetResponseAsync().ConfigureAwait(false);
 			using Stream responseStream = response.GetResponseStream();
-			using StreamReader reader = new StreamReader(responseStream);
-			using JsonReader json = new JsonTextReader(reader);
+			using StreamReader reader = new(responseStream);
+			using JsonTextReader json = new(reader);
 			return new JsonSerializer().Deserialize<T>(json);
 		}
 	}

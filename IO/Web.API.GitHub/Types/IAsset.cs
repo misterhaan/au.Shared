@@ -4,6 +4,7 @@
 	/// from the GitHub API.
 	/// </summary>
 	public interface IAsset {
+#pragma warning disable IDE1006 // Naming Styles
 		/// <summary>
 		/// Asset name
 		/// </summary>
@@ -18,5 +19,6 @@
 		/// Asset download URL
 		/// </summary>
 		string browser_download_url { get; }
+#pragma warning restore IDE1006 // Naming Styles
 	}
 }

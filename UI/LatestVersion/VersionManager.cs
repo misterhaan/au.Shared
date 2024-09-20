@@ -106,7 +106,7 @@ namespace au.UI.LatestVersion {
 		/// <param name="updateUrl">URL to the latest version update</param>
 		/// <returns></returns>
 		private static TaskDialogButtonCollection GetUpdateDialogButtons(Uri updateUrl) {
-			TaskDialogButtonCollection buttons = new TaskDialogButtonCollection();
+			TaskDialogButtonCollection buttons = [];
 
 			// install only works for msi
 			if(Path.GetExtension(updateUrl.LocalPath).Equals(".msi", StringComparison.OrdinalIgnoreCase))
@@ -132,13 +132,13 @@ namespace au.UI.LatestVersion {
 		/// <param name="url">URL to the latest version update</param>
 		/// <returns>Full path and filename where download should be saved.  Empty string if the user canceled.</returns>
 		private static string PromptForSaveLocation(IWin32Window owner, Uri url) {
-			SaveFileDialog dialog = new SaveFileDialog {
+			SaveFileDialog dialog = new() {
 				Title = Dialog.DownloadInstallerTitle,
 				AutoUpgradeEnabled = true,
 				InitialDirectory = KnownFolders.Downloads,
 				FileName = Path.GetFileName(url.LocalPath)
 			};
-			return (dialog.ShowDialog(owner)) switch {
+			return dialog.ShowDialog(owner) switch {
 				DialogResult.OK
 				or DialogResult.Yes
 					=> dialog.FileName,
@@ -152,7 +152,7 @@ namespace au.UI.LatestVersion {
 		/// <param name="url">URL to download from</param>
 		/// <param name="localFilename">Local filename to download to</param>
 		private static async Task DownloadUpdate(Uri url, string localFilename) {
-			FileInfo localFile = new FileInfo(localFilename);
+			FileInfo localFile = new(localFilename);
 			if(!localFile.Directory.Exists)
 				Directory.CreateDirectory(localFile.DirectoryName);
 			WebRequest request = HttpWebRequest.Create(url);

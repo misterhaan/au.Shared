@@ -101,18 +101,19 @@ namespace au.UI.CaptionedPictureBox {
 		/// Loads the image at the specified location, asynchronously.
 		/// </summary>
 		/// <param name="url">The path for the image to display in the PictureBox</param>
-		public void LoadAsync(string url) => _pb.LoadAsync(url);
+		public void LoadAsync(string url)
+			=> _pb.LoadAsync(url);
 
-		private void _pb_Click(object sender, EventArgs e)
+		private void Pb_Click(object sender, EventArgs e)
 			=> OnClick(e);
 
-		private void _pb_DoubleClick(object sender, EventArgs e)
+		private void Pb_DoubleClick(object sender, EventArgs e)
 			=> OnDoubleClick(e);
 
-		private void _lblCaption_Click(object sender, EventArgs e)
+		private void LblCaption_Click(object sender, EventArgs e)
 			=> OnClick(e);
 
-		private void _lblCaption_DoubleClick(object sender, EventArgs e)
+		private void LblCaption_DoubleClick(object sender, EventArgs e)
 			=> OnDoubleClick(e);
 	}
 }

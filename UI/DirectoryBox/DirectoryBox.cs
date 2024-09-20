@@ -107,7 +107,7 @@ namespace au.UI.DirectoryBox {
 				return true;
 			}
 			try {
-				DirectoryInfo di = new DirectoryInfo(path);
+				DirectoryInfo di = new(path);
 				Directory = di;
 				_txtDirectory.Text = Directory.FullName;
 				DirectoryChanged?.Invoke(this, new EventArgs());
@@ -157,22 +157,22 @@ namespace au.UI.DirectoryBox {
 				_btnBrowse.BackgroundImage = MaterialIcons.FolderBrowseFade16;
 		}
 
-		private void _btnBrowse_MouseEnter(object sender, System.EventArgs e)
+		private void BtnBrowse_MouseEnter(object sender, System.EventArgs e)
 			=> UnfadeBrowseButton();
 
-		private void _btnBrowse_MouseLeave(object sender, System.EventArgs e)
+		private void BtnBrowse_MouseLeave(object sender, System.EventArgs e)
 			=> MaybeFadeBrowseButton();
 
-		private void _btnBrowse_Enter(object sender, System.EventArgs e)
+		private void BtnBrowse_Enter(object sender, System.EventArgs e)
 			=> UnfadeBrowseButton();
 
-		private void _btnBrowse_Leave(object sender, System.EventArgs e)
+		private void BtnBrowse_Leave(object sender, System.EventArgs e)
 			=> MaybeFadeBrowseButton();
 
-		private void _btnBrowse_Click(object sender, EventArgs e)
+		private void BtnBrowse_Click(object sender, EventArgs e)
 			=> GetDirectoryFromDialog();
 
-		private void _txtDirectory_Validating(object sender, CancelEventArgs e)
+		private void TxtDirectory_Validating(object sender, CancelEventArgs e)
 			=> SetDirectory(_txtDirectory.Text);
 
 		private void DirectoryBox_EnabledChanged(object sender, EventArgs e)

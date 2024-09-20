@@ -6,6 +6,7 @@ namespace au.IO.Web.API.GitHub.Types {
 	/// Information about a release.  Subset of properties from the GitHub API.
 	/// </summary>
 	public interface IRelease {
+#pragma warning disable IDE1006 // Naming Styles
 		/// <summary>
 		/// Release name
 		/// </summary>
@@ -30,5 +31,6 @@ namespace au.IO.Web.API.GitHub.Types {
 		/// Files included in the release
 		/// </summary>
 		IReadOnlyList<IAsset> assets { get; }
+#pragma warning restore IDE1006 // Naming Styles
 	}
 }

@@ -96,7 +96,7 @@ namespace au.IO.Web.API.GitHub.Tests {
 			=> GetUpdateChecker(repoName, null);
 
 		private static UpdateChecker GetUpdateChecker(string repoName, WebException wex)
-			=> new UpdateChecker(_username, repoName, GetApiFactory(wex));
+			=> new(_username, repoName, GetApiFactory(wex));
 
 		private static IApiFactory GetApiFactory(WebException wex) {
 			IApiFactory factory = A.Fake<IApiFactory>();
@@ -132,7 +132,7 @@ namespace au.IO.Web.API.GitHub.Tests {
 			IRelease release = A.Fake<IRelease>();
 			A.CallTo(() => release.tag_name).Returns("v" + GetNewerVersion());
 			if(hasFiles)
-				A.CallTo(() => release.assets).Returns(new IAsset[] { GetAsset() });
+				A.CallTo(() => release.assets).Returns([GetAsset()]);
 			return release;
 		}
 
@@ -159,6 +159,6 @@ namespace au.IO.Web.API.GitHub.Tests {
 		}
 
 		private static WebException GetWebException(WebExceptionStatus status)
-			=> new WebException(nameof(GetWebException), new Exception(), status, A.Fake<WebResponse>());
+			=> new(nameof(GetWebException), new Exception(), status, A.Fake<WebResponse>());
 	}
 }

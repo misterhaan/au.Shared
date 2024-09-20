@@ -95,7 +95,7 @@
 			this._btnPrompt.TabIndex = 5;
 			this._btnPrompt.Text = "PromptForUpdate";
 			this._btnPrompt.UseVisualStyleBackColor = true;
-			this._btnPrompt.Click += new System.EventHandler(this._btnPrompt_Click);
+			this._btnPrompt.Click += new System.EventHandler(this.BtnPrompt_Click);
 			// 
 			// _btnClose
 			// 
@@ -108,7 +108,7 @@
 			this._btnClose.TabIndex = 6;
 			this._btnClose.Text = "Close";
 			this._btnClose.UseVisualStyleBackColor = true;
-			this._btnClose.Click += new System.EventHandler(this._btnClose_Click);
+			this._btnClose.Click += new System.EventHandler(this.BtnClose_Click);
 			// 
 			// VersionManagerTestForm
 			// 

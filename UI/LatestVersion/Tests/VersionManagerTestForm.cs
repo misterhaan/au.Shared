@@ -14,12 +14,12 @@ namespace au.UI.LatestVersion.Tests {
 			InitializeComponent();
 		}
 
-		private async void _btnPrompt_Click(object sender, EventArgs e) {
-			VersionManager manager = new VersionManager(_txtUsername.Text, _txtRepoName.Text);
+		private async void BtnPrompt_Click(object sender, EventArgs e) {
+			VersionManager manager = new(_txtUsername.Text, _txtRepoName.Text);
 			await manager.PromptForUpdate(this, _chkAlwaysShow.Checked).ConfigureAwait(false);
 		}
 
-		private void _btnClose_Click(object sender, EventArgs e)
+		private void BtnClose_Click(object sender, EventArgs e)
 			=> Application.Exit();
 	}
 }

@@ -6,18 +6,18 @@ namespace au.UI.LatestVersion {
 	/// <summary>
 	/// Access to known folder locations
 	/// </summary>
-	internal static class KnownFolders {
+	internal static partial class KnownFolders {
 		/// <summary>
 		/// User's downloads folder
 		/// </summary>
 		internal static string Downloads => _downloads.Value;
-		private static readonly Lazy<string> _downloads = new Lazy<string>(GetDownloadsFolder);
+		private static readonly Lazy<string> _downloads = new(GetDownloadsFolder);
 
 		/// <summary>
 		/// User's temp folder
 		/// </summary>
 		internal static string Temp => _temp.Value;
-		private static readonly Lazy<string> _temp = new Lazy<string>(Path.GetTempPath);
+		private static readonly Lazy<string> _temp = new(Path.GetTempPath);
 
 		/// <summary>
 		/// Looks up user's downloads folder.  Should only run once.
@@ -32,10 +32,10 @@ namespace au.UI.LatestVersion {
 		/// <param name="guid">GUID of known folder to look up</param>
 		/// <returns>Known folder path</returns>
 		private static string GetFolderFromGuid(string guid) {
-			Guid folderId = new Guid(guid);
+			Guid folderId = new(guid);
 			IntPtr pathPtr = IntPtr.Zero;
 			try {
-				return (SHGetKnownFolderPath(ref folderId, 0, IntPtr.Zero, out pathPtr)) switch {
+				return SHGetKnownFolderPath(ref folderId, 0, IntPtr.Zero, out pathPtr) switch {
 					0  // S_OK
 						=> Marshal.PtrToStringUni(pathPtr),
 					0x80070057  // E_INVALIDARG 0x80070057
@@ -49,7 +49,7 @@ namespace au.UI.LatestVersion {
 			}
 		}
 
-		[DllImport("shell32.dll", CharSet = CharSet.Auto)]
-		private static extern uint SHGetKnownFolderPath(ref Guid id, int flags, IntPtr token, out IntPtr path);
+		[LibraryImport("shell32.dll")]
+		private static partial uint SHGetKnownFolderPath(ref Guid id, int flags, IntPtr token, out IntPtr path);
 	}
 }

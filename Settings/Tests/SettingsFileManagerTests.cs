@@ -8,9 +8,9 @@ namespace au.Settings.Tests {
 
 		[TestMethod]
 		public void SaveLoad_PropertiesMatch() {
-			FileInfo file = new FileInfo(Path.Combine(Path.GetTempPath(), $"{nameof(SettingsFileManagerTests)}.{nameof(this.SaveLoad_PropertiesMatch)}.xml"));
+			FileInfo file = new(Path.Combine(Path.GetTempPath(), $"{nameof(SettingsFileManagerTests)}.{nameof(this.SaveLoad_PropertiesMatch)}.xml"));
 			try {
-				SettingsFileManager<FakeSettings> settingsManager = new SettingsFileManager<FakeSettings>(file);
+				SettingsFileManager<FakeSettings> settingsManager = new(file);
 				settingsManager.Settings.NewProperty = "foo";
 				settingsManager.Settings.IsAwesome = true;
 				settingsManager.Settings.Title = "hello";
@@ -29,9 +29,9 @@ namespace au.Settings.Tests {
 
 		[TestMethod]
 		public void LoadOldSettings_NewPropertyHasCorrectDefault() {
-			FileInfo file = new FileInfo(Path.Combine(Path.GetTempPath(), $"{nameof(SettingsFileManagerTests)}.{nameof(this.LoadOldSettings_NewPropertyHasCorrectDefault)}.xml"));
+			FileInfo file = new(Path.Combine(Path.GetTempPath(), $"{nameof(SettingsFileManagerTests)}.{nameof(this.LoadOldSettings_NewPropertyHasCorrectDefault)}.xml"));
 			try {
-				SettingsFileManager<OldFakeSettings> oldSettingsManager = new SettingsFileManager<OldFakeSettings>(file);
+				SettingsFileManager<OldFakeSettings> oldSettingsManager = new(file);
 				oldSettingsManager.Settings.IsAwesome = true;
 				oldSettingsManager.Save();
 				string serialized;

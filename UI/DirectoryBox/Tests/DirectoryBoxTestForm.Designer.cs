@@ -75,7 +75,7 @@
 			this._chkEnabled.TabIndex = 10;
 			this._chkEnabled.Text = "Enabled";
 			this._chkEnabled.UseVisualStyleBackColor = true;
-			this._chkEnabled.CheckedChanged += new System.EventHandler(this._chkEnabled_CheckedChanged);
+			this._chkEnabled.CheckedChanged += new System.EventHandler(this.ChkEnabled_CheckedChanged);
 			// 
 			// _chkAutoComplete
 			// 
@@ -88,7 +88,7 @@
 			this._chkAutoComplete.TabIndex = 9;
 			this._chkAutoComplete.Text = "AutoComplete";
 			this._chkAutoComplete.UseVisualStyleBackColor = true;
-			this._chkAutoComplete.CheckedChanged += new System.EventHandler(this._chkAutoComplete_CheckedChanged);
+			this._chkAutoComplete.CheckedChanged += new System.EventHandler(this.ChkAutoComplete_CheckedChanged);
 			// 
 			// _chkAllowCreation
 			// 
@@ -99,7 +99,7 @@
 			this._chkAllowCreation.TabIndex = 8;
 			this._chkAllowCreation.Text = "AllowCreation";
 			this._chkAllowCreation.UseVisualStyleBackColor = true;
-			this._chkAllowCreation.CheckedChanged += new System.EventHandler(this._chkAllowCreation_CheckedChanged);
+			this._chkAllowCreation.CheckedChanged += new System.EventHandler(this.ChkAllowCreation_CheckedChanged);
 			// 
 			// _btnSetDirectory
 			// 
@@ -110,7 +110,7 @@
 			this._btnSetDirectory.TabIndex = 7;
 			this._btnSetDirectory.Text = "Set";
 			this._btnSetDirectory.UseVisualStyleBackColor = true;
-			this._btnSetDirectory.Click += new System.EventHandler(this._btnSetDirectory_Click);
+			this._btnSetDirectory.Click += new System.EventHandler(this.BtnSetDirectory_Click);
 			// 
 			// lblDirectory
 			// 
@@ -147,7 +147,7 @@
 			this._txtDescription.Name = "_txtDescription";
 			this._txtDescription.Size = new System.Drawing.Size(394, 20);
 			this._txtDescription.TabIndex = 4;
-			this._txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this._txtDescription_Validating);
+			this._txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.TxtDescription_Validating);
 			// 
 			// lblBasePath
 			// 
@@ -168,7 +168,7 @@
 			this._txtBasePath.Name = "_txtBasePath";
 			this._txtBasePath.Size = new System.Drawing.Size(394, 20);
 			this._txtBasePath.TabIndex = 2;
-			this._txtBasePath.Validating += new System.ComponentModel.CancelEventHandler(this._txtBasePath_Validating);
+			this._txtBasePath.Validating += new System.ComponentModel.CancelEventHandler(this.TxtBasePath_Validating);
 			// 
 			// _dirTest
 			// 
@@ -180,7 +180,7 @@
 			this._dirTest.Name = "_dirTest";
 			this._dirTest.Size = new System.Drawing.Size(463, 20);
 			this._dirTest.TabIndex = 11;
-			this._dirTest.DirectoryChanged += new System.EventHandler(this._dirTest_DirectoryChanged);
+			this._dirTest.DirectoryChanged += new System.EventHandler(this.DirTest_DirectoryChanged);
 			// 
 			// lblText
 			// 

@@ -9,34 +9,34 @@ namespace au.Settings.Tests {
 	public class FormGeometrySettingsTests {
 		[TestMethod]
 		public void WindowState_DefaultNormal() {
-			FormGeometrySettings settings = new FormGeometrySettings();
+			FormGeometrySettings settings = new();
 
 			Assert.AreEqual(FormWindowState.Normal, settings.WindowState);
 		}
 
 		[TestMethod]
 		public void Location_DefaultNoValue() {
-			FormGeometrySettings settings = new FormGeometrySettings();
+			FormGeometrySettings settings = new();
 
 			Assert.IsFalse(settings.Location.HasValue);
 		}
 
 		[TestMethod]
 		public void Size_DefaultNoValue() {
-			FormGeometrySettings settings = new FormGeometrySettings();
+			FormGeometrySettings settings = new();
 
 			Assert.IsFalse(settings.Size.HasValue);
 		}
 
 		[TestMethod]
 		public void XmlSerializeDeserialize_SameSettings() {
-			FormGeometrySettings originalSettings = new FormGeometrySettings {
+			FormGeometrySettings originalSettings = new() {
 				WindowState = FormWindowState.Maximized,
 				Location = new Point(12, 34),
 				Size = new Size(1280, 720)
 			};
-			XmlSerializer serializer = new XmlSerializer(originalSettings.GetType());
-			MemoryStream stream = new MemoryStream();
+			XmlSerializer serializer = new(originalSettings.GetType());
+			MemoryStream stream = new();
 			serializer.Serialize(stream, originalSettings);
 			stream.Flush();
 			stream.Position = 0;

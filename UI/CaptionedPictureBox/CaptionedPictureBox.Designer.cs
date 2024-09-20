@@ -39,8 +39,8 @@
 			this._lblCaption.TabIndex = 1;
 			this._lblCaption.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			this._lblCaption.UseMnemonic = false;
-			this._lblCaption.Click += new System.EventHandler(this._lblCaption_Click);
-			this._lblCaption.DoubleClick += new System.EventHandler(this._lblCaption_DoubleClick);
+			this._lblCaption.Click += new System.EventHandler(this.LblCaption_Click);
+			this._lblCaption.DoubleClick += new System.EventHandler(this.LblCaption_DoubleClick);
 			// 
 			// _pb
 			// 
@@ -50,8 +50,8 @@
 			this._pb.Size = new System.Drawing.Size(150, 127);
 			this._pb.TabIndex = 4;
 			this._pb.TabStop = false;
-			this._pb.Click += new System.EventHandler(this._pb_Click);
-			this._pb.DoubleClick += new System.EventHandler(this._pb_DoubleClick);
+			this._pb.Click += new System.EventHandler(this.Pb_Click);
+			this._pb.DoubleClick += new System.EventHandler(this.Pb_DoubleClick);
 			// 
 			// CaptionedPictureBox
 			// 

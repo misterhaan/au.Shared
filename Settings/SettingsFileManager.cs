@@ -6,19 +6,8 @@ namespace au.Settings {
 	/// Save and load settings from a file.
 	/// </summary>
 	/// <typeparam name="TSettings">Settings type.</typeparam>
-	public class SettingsFileManager<TSettings> where TSettings : new() {
-		/// <summary>
-		/// File to save and load from.
-		/// </summary>
-		private readonly FileInfo _file;
-
-		/// <summary>
-		/// FileInfo constructor.
-		/// </summary>
-		/// <param name="file">Settings file.</param>
-		public SettingsFileManager(FileInfo file) {
-			_file = file;
-		}
+	/// <param name="file">Settings file.</param>
+	public class SettingsFileManager<TSettings>(FileInfo file) where TSettings : new() {
 
 		/// <summary>
 		/// File path string constructor.
@@ -31,8 +20,7 @@ namespace au.Settings {
 		/// </summary>
 		public TSettings Settings {
 			get {
-				if(_settings == null)
-					_settings = Load();
+				_settings ??= Load();
 				return _settings;
 			}
 		}
@@ -42,8 +30,8 @@ namespace au.Settings {
 		/// Save settings to file.
 		/// </summary>
 		public void Save() {
-			using(StreamWriter writer = _file.CreateText())
-				new XmlSerializer(typeof(TSettings)).Serialize(writer, Settings);
+			using StreamWriter writer = file.CreateText();
+			new XmlSerializer(typeof(TSettings)).Serialize(writer, Settings);
 		}
 
 		/// <summary>
@@ -51,9 +39,9 @@ namespace au.Settings {
 		/// </summary>
 		/// <returns>Settings.</returns>
 		protected TSettings Load() {
-			_file.Refresh();
-			if(_file.Exists)
-				using(StreamReader reader = _file.OpenText())
+			file.Refresh();
+			if(file.Exists)
+				using(StreamReader reader = file.OpenText())
 					if(new XmlSerializer(typeof(TSettings)).Deserialize(reader) is TSettings settings)
 						return settings;
 			return new TSettings();

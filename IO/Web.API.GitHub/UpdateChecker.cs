@@ -40,7 +40,7 @@ namespace au.IO.Web.API.GitHub {
 			IReposApi api = _apiFactory.BuildReposApi(_username, _repoName);
 			try {
 				IRelease latest = await api.LatestRelease().ConfigureAwait(false);
-				Version latestVersion = new Version(latest.tag_name.TrimStart('v'));
+				Version latestVersion = new(latest.tag_name.TrimStart('v'));
 				return latestVersion > ApplicationVersion
 					? latest.assets.Any()
 						? UpdateCheckResult.FromLatestRelease(latest)
@@ -52,7 +52,7 @@ namespace au.IO.Web.API.GitHub {
 					case WebExceptionStatus.ConnectFailure:
 						return new UpdateCheckResult(EventLevel.Error, Messages.NoUpdateTitle, Messages.NoUpdateCannotConnect);
 					case WebExceptionStatus.ProtocolError:
-						if((wex.Response as HttpWebResponse)?.StatusCode == HttpStatusCode.NotFound)
+						if(wex.Response is HttpWebResponse { StatusCode: HttpStatusCode.NotFound })
 							return new UpdateCheckResult(EventLevel.Error, Messages.NoUpdateTitle, Messages.NoUpdateNoReleases);
 						goto default;  // we only handled not found, so anything else is a random other error
 					default:
