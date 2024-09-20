@@ -1,11 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>au.Settings.Types</AssemblyName>
     <RootNamespace>au.Settings.Types</RootNamespace>
     <Description>Types for au.Settings</Description>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -16,6 +17,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>..\..\bin\Release\au.Settings.Types.xml</DocumentationFile>
     <OutputPath>..\..\bin\Release\</OutputPath>
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <Import Project="..\..\PackageInfo.Common.proj" />

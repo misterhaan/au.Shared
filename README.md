@@ -25,6 +25,8 @@ Provides a control for selecting a directory.
 Provides dialogs for checking for, downloading, and installing application updates.
 
 ## Revision History
+* Update to .NET 8.0
+
 ### 6.0.0
 * Update to .NET 5.0 (older .NET Framework projects will need to stay on older versions)
 * Removed au.UI.TaskDialog since .NET 5.0 provides it

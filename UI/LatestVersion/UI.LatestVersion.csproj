@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net5.0-windows</TargetFramework>
+		<TargetFramework>net8.0-windows7.0</TargetFramework>
 		<UseWindowsForms>true</UseWindowsForms>
 		<AssemblyName>au.UI.LatestVersion</AssemblyName>
 		<RootNamespace>au.UI.LatestVersion</RootNamespace>
 		<Description>Updates an application to its latest released version.</Description>
-		<Nullable></Nullable>
+		<Nullable>disable</Nullable>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,6 +17,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<OutputPath>..\..\bin\Release\</OutputPath>
 		<DocumentationFile>..\..\bin\Release\au.UI.LatestVersion.xml</DocumentationFile>
+		<DebugType>none</DebugType>
 	</PropertyGroup>
 
 	<ItemGroup>

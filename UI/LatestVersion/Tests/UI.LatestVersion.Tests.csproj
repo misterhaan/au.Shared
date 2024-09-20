@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net5.0-windows</TargetFramework>
+		<TargetFramework>net8.0-windows7.0</TargetFramework>
 		<UseWindowsForms>true</UseWindowsForms>
 
 		<IsPackable>false</IsPackable>
@@ -17,6 +17,8 @@
 		<Version>0.0.1</Version>
 
 		<Description>Test form for latest version check</Description>
+
+		<Nullable>disable</Nullable>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -26,6 +28,7 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	  <OutputPath>..\..\..\bin\Release\</OutputPath>
+	  <DebugType>none</DebugType>
 	</PropertyGroup>
 
 	<ItemGroup>

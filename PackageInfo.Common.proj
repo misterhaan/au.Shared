@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<Company>the analog underground</Company>
 		<Authors>misterhaan</Authors>
-		<Copyright>© 2019 - 2021 the analog underground</Copyright>
+		<Copyright>© 2019 - 2024 the analog underground</Copyright>
 		<Product>Common Utility</Product>
 		<PackageProjectUrl>https://www.track7.org/code/vs/shared-utilities</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/misterhaan/au.Shared</RepositoryUrl>

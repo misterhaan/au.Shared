@@ -1,11 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net5.0-windows</TargetFramework>
+		<TargetFramework>net8.0-windows7.0</TargetFramework>
 		<UseWindowsForms>true</UseWindowsForms>
 		<AssemblyName>au.IO.Files.FileOperation</AssemblyName>
 		<RootNamespace>au.IO.Files.FileOperation</RootNamespace>
 		<Description>Provides access to the Windows Explorer file move / copy dialog.  Requires Windows Vista or newer.</Description>
+		<Nullable>disable</Nullable>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -16,6 +17,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	  <OutputPath>..\..\bin\Release\</OutputPath>
 	  <DocumentationFile>..\..\bin\Release\au.IO.Files.FileOperation.xml</DocumentationFile>
+	  <DebugType>none</DebugType>
 	</PropertyGroup>
 
 	<Import Project="..\..\PackageInfo.Common.proj" />

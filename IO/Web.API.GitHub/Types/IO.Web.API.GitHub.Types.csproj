@@ -1,10 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<AssemblyName>au.IO.Web.API.GitHub.Types</AssemblyName>
 		<RootNamespace>au.IO.Web.API.GitHub.Types</RootNamespace>
 		<Description>Types for the analog underground GitHub API library</Description>
+		<Nullable>disable</Nullable>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,6 +16,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	  <OutputPath>..\..\..\bin\Release\</OutputPath>
 	  <DocumentationFile>..\..\..\bin\Release\au.IO.Web.API.GitHub.Types.xml</DocumentationFile>
+	  <DebugType>none</DebugType>
 	</PropertyGroup>
 
 	<Import Project="..\..\..\PackageInfo.Common.proj" />
